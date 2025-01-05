@@ -1,0 +1,27 @@
+a{
+  font-size: 300%;
+  color: blue;
+  text-align: center;
+}
+
+style{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background: rgb(255, 255, 255);
+  margin: 0;
+  }
+
+  canvas {
+  width: 80%;
+  height: 80vh;
+  border: 5px solid rgb(0, 0, 0); /* Esto es solo para ver el borde del canvas */
+}
