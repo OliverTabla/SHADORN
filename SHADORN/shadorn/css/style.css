@@ -1,8 +1,10 @@
 a{
-  font-size: 300%;
+  font-size: 50%;
   color: blue;
   text-align: center;
 }
+
+
 
 style{
   box-sizing: border-box;
@@ -18,10 +20,13 @@ body {
   place-items: center;
   background: rgb(255, 255, 255);
   margin: 0;
-  }
-
-  canvas {
-  width: 80%;
-  height: 80vh;
-  border: 5px solid rgb(0, 0, 0); /* Esto es solo para ver el borde del canvas */
 }
+
+
+canvas { /* Usa un porcentaje más flexible */
+  max-width: 80%; /* Define un ancho máximo para pantallas grandes */
+  max-height: 80%; /* Ajusta dinámicamente según la altura de la pantalla */
+  border: 5px solid rgb(0, 0, 0);
+}
+
+
