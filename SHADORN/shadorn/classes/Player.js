@@ -6,8 +6,8 @@ class Player {
   constructor({ x, y, size, velocity = { x: 0, y: 0 } }) {
     this.x = x
     this.y = y
-    this.width = 28
-    this.height = 28
+    this.width = 60 
+    this.height = 60
     this.velocity = velocity
     this.isOnGround = false
     this.isImageLoaded = false
@@ -32,10 +32,10 @@ class Player {
 
     if (this.imageLoaded === true) {
       const cropbox = {
-        x: 0,
-        y: 0,
-        width: 65,
-        height: 57,
+        x: -15,
+        y: -6,
+        width: 150,
+        height: 150
       }
 
       c.drawImage(
