@@ -1,8 +1,4 @@
-a{
-  font-size: 50%;
-  color: blue;
-  text-align: center;
-}
+
 
 
 
@@ -16,9 +12,18 @@ style{
 }
 
 body {
+    a{
+      button{
+        font-size: 150%;
+        color:aqua;
+      }
+    font-size: 100%;
+    color: blue;
+    text-align: center;
+  }
   display: grid;
   place-items: center;
-  background: rgb(255, 255, 255);
+  background: rgb(0, 153, 255);
   margin: 0;
 }
 

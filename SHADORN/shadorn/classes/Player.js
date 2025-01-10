@@ -20,9 +20,29 @@ class Player {
     this.currentFrame = 0
     this.sprites = {
       idle: {
-        
-      }
+        x: -15,
+        y: -6,
+        width: 150,
+        height: 150,
+        frames: 1,
+      },
+      run: {
+        x: -15,
+        y: 160,
+        width: 150,
+        height: 150,
+        frames: 4,
+      },
+      run: {
+        x:  0,
+        y: 160,
+        width: 150,
+        height: 150,
+        frames: 4,
+      },
     }
+    this.currentSprite = this.sprites.idle
+    this.facing = 'right'
   }
 
   draw(c) {
@@ -31,25 +51,28 @@ class Player {
     c.fillRect(this.x, this.y, this.width, this.height)
 
     if (this.imageLoaded === true) {
-      const cropbox = {
-        x: -15,
-        y: -6,
-        width: 150,
-        height: 150
+      let xScale = 1
+      let x = this.x
+
+      if (this.facing === 'left') {
+        xScale = -1
+        x = -this.x - this.width
       }
 
+      c.save()
+      c.scale(xScale, 1)
       c.drawImage(
         this.image, 
-        cropbox.x + cropbox.width * this.currentFrame, 
-        cropbox.y,
-        cropbox.height,
-        cropbox.width, 
-        this.x, 
+        this.currentSprite.x +  this.currentSprite.width * this.currentFrame, 
+        this.currentSprite.y,
+        this.currentSprite.height,
+        this.currentSprite.width, 
+        x, 
         this.y, 
         this.width, 
         this.height,
       )
-  
+      c.restore()
     }
   }
 
@@ -59,15 +82,9 @@ class Player {
     this.elapsedTime += deltaTime
     const secondsInterval = 0.1
     if (this.elapsedTime > secondsInterval) {
-      this.currentFrame = (this.currentFrame +1) % 4
+      this.currentFrame = (this.currentFrame +1) % this.currentSprite.frames
       this.elapsedTime -= secondsInterval
-    
-
-
     }
-
-
-
     this.applyGravity(deltaTime)
 
     // Update horizontal position and check collisions
@@ -80,8 +97,40 @@ class Player {
     // Update vertical position and check collisions
     this.updateVerticalPosition(deltaTime)
     this.checkForVerticalCollisions(collisionBlocks)
+    this.determineDirection()
+    this.switchSprites()
+  }
+  
+  determineDirection() {
+    if (this.velocity.x > 0) {
+      this.facing = 'right'
+    } else if (this.velocity.x < 0) {
+      this.facing = 'left'
+    }
   }
 
+
+  switchSprites() {
+    if (
+      this.isOnGround && 
+      this.velocity.x === 0 && 
+      this.currentSprite !== this.sprites.idle 
+    ) {
+      //Quieto
+      this.currentFrame = 0
+      this.currentSprite = this.sprites.idle
+    } else if (
+      this.isOnGround && 
+      this.velocity.x !== 0 &&
+      this.currentSprite !== this.sprites.run
+    ) {
+      //Corriendo
+      this.currentFrame = 0
+      this.currentSprite = this.sprites.run
+    }
+  }
+  
+    
   jump() {
     if(!this.isOnGround)
       return;
