@@ -135,6 +135,15 @@ const player = new Player({
   velocity: { x: 0, y: 0 },
 });
 
+const rocky = new Rocky({
+  x: 300,
+  y: 230,
+  size: 16,
+});
+
+
+
+
 const keys = {
   w: { pressed: false },
   a: { pressed: false },
@@ -155,8 +164,16 @@ function animate(backgroundCanvas) {
   const deltaTime = (currentTime - lastTime) / 1000;
   lastTime = currentTime;
 
+  //actualizar posicion jugador
   player.handleInput(keys);
   player.update(deltaTime, collisionBlocks);
+
+  //actualizar posicion rocky
+  rocky.update(deltaTime, collisionBlocks);
+
+  if (checkCollision(player, rocky)) {
+    player.velocity.y = -200
+  }
 
   if (player.x > SCROLL_POST_RIGHT && player.x < 1485) {
     camera.x = player.x - SCROLL_POST_RIGHT;
@@ -178,6 +195,7 @@ function animate(backgroundCanvas) {
   c.drawImage(bramblebackgroundCanvas, camera.x * 0.16, 0);
   c.drawImage(backgroundCanvas, 0, 0);
   player.draw(c);
+  rocky.draw(c);
   c.restore();
 
   requestAnimationFrame(() => animate(backgroundCanvas));

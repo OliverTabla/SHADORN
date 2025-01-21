@@ -1,5 +1,5 @@
 const X_VELOCITY = 200
-const JUMP_POWER = 400
+const JUMP_POWER = 350
 const GRAVITY = 580
 
 class Player {
@@ -20,35 +20,51 @@ class Player {
     this.currentFrame = 0
     this.sprites = {
       idle: {
-        x: -15,
+        x: -20,
         y: -6,
         width: 150,
         height: 150,
         frames: 1,
       },
       run: {
-        x: -15,
-        y: 160,
+        x: -13,
+        y: 158,
         width: 150,
         height: 150,
         frames: 4,
       },
-      run: {
-        x:  0,
-        y: 160,
-        width: 150,
-        height: 150,
-        frames: 4,
+      jump: {
+        x: 0,
+        y: 162 * 2,
+        width: 155,
+        height: 155,
+        frames: 1,
+      },
+      fall: {
+        x: 150,
+        y: 160 * 2,
+        width: 160,
+        height: 160,
+        frames: 1,
       },
     }
     this.currentSprite = this.sprites.idle
     this.facing = 'right'
+    this.hitbox = {
+      x: 0,
+      y: 0,
+      width: 30,
+      height: 52,
+    }
   }
 
   draw(c) {
     // CUADRADO ROJO PARA PRUEBAS
     c.fillStyle = 'rgba(255, 0, 0, 0.5)'
     c.fillRect(this.x, this.y, this.width, this.height)
+    //hitbox
+    c.fillStyle = 'rgba(2, 0, 126, 0.5)'
+    c.fillRect(this.hitbox.x, this.hitbox.y, this.hitbox.width, this.hitbox.height)
 
     if (this.imageLoaded === true) {
       let xScale = 1
@@ -80,11 +96,16 @@ class Player {
     if (!deltaTime) return
 
     this.elapsedTime += deltaTime
-    const secondsInterval = 0.1
+    const secondsInterval = 0.13
     if (this.elapsedTime > secondsInterval) {
       this.currentFrame = (this.currentFrame +1) % this.currentSprite.frames
       this.elapsedTime -= secondsInterval
     }
+
+    //Posicion de la hitbox
+    this.hitbox.x = this.x + 17
+    this.hitbox.y = this.y + 8
+
     this.applyGravity(deltaTime)
 
     // Update horizontal position and check collisions
@@ -127,6 +148,21 @@ class Player {
       //Corriendo
       this.currentFrame = 0
       this.currentSprite = this.sprites.run
+    } else if (
+      !this.isOnGround && 
+      this.velocity.y < 0 && 
+      this.currentSprite !== this.sprites.jump
+    ) {
+        //Salto
+      this.currentFrame = 0
+      this.currentSprite = this.sprites.jump
+    } else if (
+      !this.isOnGround && this.velocity.y > 0 && 
+      this.currentSprite !== this.sprites.fall
+    ) {
+        //caida
+      this.currentFrame = 0
+      this.currentSprite = this.sprites.fall
     }
   }
   
@@ -140,10 +176,13 @@ class Player {
 
   updateHorizontalPosition(deltaTime) {
     this.x += this.velocity.x * deltaTime
+    this.hitbox.x += this.velocity.x * deltaTime
   }
 
   updateVerticalPosition(deltaTime) {
     this.y += this.velocity.y * deltaTime
+    this.hitbox.y += this.velocity.y * deltaTime
+    
   }
 
   applyGravity(deltaTime) {
@@ -167,20 +206,22 @@ class Player {
 
       // Check if a collision exists on all axes
       if (
-        this.x <= collisionBlock.x + collisionBlock.width &&
-        this.x + this.width >= collisionBlock.x &&
-        this.y + this.height >= collisionBlock.y &&
-        this.y <= collisionBlock.y + collisionBlock.height
+        this.hitbox.x <= collisionBlock.x + collisionBlock.width &&
+        this.hitbox.x + this.hitbox.width >= collisionBlock.x &&
+        this.hitbox.y + this.hitbox.height >= collisionBlock.y &&
+        this.hitbox.y <= collisionBlock.y + collisionBlock.height
       ) {
         // Check collision while player is going left
         if (this.velocity.x < -0) {
-          this.x = collisionBlock.x + collisionBlock.width + buffer
+          this.hitbox.x = collisionBlock.x + collisionBlock.width + buffer
+          this.x = this.hitbox.x - 17
           break
         }
 
         // Check collision while player is going right
         if (this.velocity.x > 0) {
-          this.x = collisionBlock.x - this.width - buffer
+          this.hitbox.x = collisionBlock.x - this.hitbox.width - buffer
+          this.x = this.hitbox.x - 17
           break
         }
       }
@@ -194,15 +235,16 @@ class Player {
 
       // If a collision exists
       if (
-        this.x <= collisionBlock.x + collisionBlock.width &&
-        this.x + this.width >= collisionBlock.x &&
-        this.y + this.height >= collisionBlock.y &&
-        this.y <= collisionBlock.y + collisionBlock.height
+        this.hitbox.x <= collisionBlock.x + collisionBlock.width &&
+        this.hitbox.x + this.hitbox.width >= collisionBlock.x &&
+        this.hitbox.y + this.hitbox.height >= collisionBlock.y &&
+        this.hitbox.y <= collisionBlock.y + collisionBlock.height
       ) {
         // Check collision while player is going up
         if (this.velocity.y < 0) {
           this.velocity.y = 0
-          this.y = collisionBlock.y + collisionBlock.height + buffer
+          this.hitbox.y = collisionBlock.y + collisionBlock.height + buffer
+          this.y = this.hitbox.y - 8
           break
         }
 
@@ -210,6 +252,7 @@ class Player {
         if (this.velocity.y > 0) {
           this.velocity.y = 0
           this.y = collisionBlock.y - this.height - buffer
+          this.hitbox.y = collisionBlock.y - this.hitbox.height - buffer
           this.isOnGround = true
           break
         }
