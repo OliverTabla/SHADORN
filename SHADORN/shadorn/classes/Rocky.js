@@ -3,12 +3,12 @@ const ROCKY_JUMP_POWER = 350
 const ROCKY_GRAVITY = 580
 
 class Rocky {
-  constructor({ x, y, size, velocity = { x: ROCKY_X_VELOCITY, y: 0 } },
+  constructor({ x, y, width, height, velocity = { x: ROCKY_X_VELOCITY, y: 0 } },
     turningDistance = 200,) {
     this.x = x
     this.y = y
-    this.width = 50 
-    this.height = 50
+    this.width = width
+    this.height = height
     this.velocity = velocity
     this.isOnGround = false
     this.isImageLoaded = false

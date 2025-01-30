@@ -47,7 +47,7 @@ const tilesets = {
   l_Front_Tiles: { imageUrl: './images/tileset.png', tileSize: 16 },
   l_Decorations: { imageUrl: './images/decorations.png', tileSize: 16 },
   l_Front_Tiles_2: { imageUrl: './images/tileset.png', tileSize: 16 },
-  l_Gems: { imageUrl: './images/decorations.png', tileSize: 16 },
+  //l_Gems: { imageUrl: './images/decorations.png', tileSize: 16 },
   l_Collisions: { imageUrl: './images/decorations.png', tileSize: 16 },
 };
 
@@ -128,21 +128,67 @@ const renderStaticLayers = async (layersData) => {
   return offscreenCanvas;
 };
 
-const player = new Player({
-  x: 90,
-  y: 230,
-  size: 16,
+let player = new Player({
+  x: 70,
+  y: 200,
+  size: 60,
   velocity: { x: 0, y: 0 },
 });
 
-const rocky = new Rocky({
-  x: 300,
-  y: 230,
-  size: 16,
-});
+let rockys =  [
+  new Rocky({
+    x: 528,
+    y: 224,
+    width: 50,
+    height: 50,
+  }),
+]
 
-
-
+let explosiones = []
+let corazones = [
+  new Corazon({
+    x: 10, 
+    y: 10, 
+    width: 35, 
+    height: 35, 
+    imageSrc: './assets/entities/corazon.png', 
+    spriteCropbox: {
+      x: 0,
+      y: 0,
+      width: 80,
+      height: 80,
+      frames: 6,
+    },
+  }),
+  new Corazon({
+    x: 45, 
+    y: 10, 
+    width: 35, 
+    height: 35, 
+    imageSrc: './assets/entities/corazon.png', 
+    spriteCropbox: {
+      x: 0,
+      y: 0,
+      width: 80,
+      height: 80,
+      frames: 6,
+    },
+  }),
+  new Corazon({
+    x: 80, 
+    y: 10, 
+    width: 35, 
+    height: 35, 
+    imageSrc: './assets/entities/corazon.png', 
+    spriteCropbox: {
+      x: 0,
+      y: 0,
+      width: 80,
+      height: 80,
+      frames: 6,
+    },
+  })
+]
 
 const keys = {
   w: { pressed: false },
@@ -151,14 +197,143 @@ const keys = {
 };
 
 let lastTime = performance.now();
-const camera = { x: 0, y: 0 };
+let camera = { x: 0, y: 0 };
 const SCROLL_POST_RIGHT = 220;
 const SCROLL_POST_TOP = 100;
 const SCROLL_POST_BOTTOM = 200;
 
 let oceanbackgroundCanvas = null;
 let bramblebackgroundCanvas = null;
+let gems = []
+let gemUI = new Explosion ({
+  x: 18, 
+  y: 55, 
+  width:  18,
+  height: 18,
+  imageSrc: './assets/entities/perla.png',
+  spriteCropbox: {
+    x: 0,
+    y: 0,
+    width: 31,
+    height: 31,
+    frames: 5,
+  },
+})
+let gemCount = 0
 
+function init() {
+  gems = []
+  gemCount = 0
+  gemUI = new Explosion ({
+    x: 18, 
+    y: 55, 
+    width:  18,
+    height: 18,
+    imageSrc: './assets/entities/perla.png',
+    spriteCropbox: {
+      x: 0,
+      y: 0,
+      width: 31,
+      height: 31,
+      frames: 5,
+    },
+  })
+
+  l_Gems.forEach((row, y) => {
+    row.forEach((symbol, x) => {
+      if (symbol === 18) {
+        gems.push(
+          new Explosion({
+            x: x * 16, 
+            y: y * 16, 
+            width:  18,
+            height: 18,
+            imageSrc: './assets/entities/perla.png',
+            spriteCropbox: {
+              x: 0,
+              y: 0,
+              width: 31,
+              height: 31,
+              frames: 5,
+            },
+            hitbox: {
+              x: x * 16, 
+              y: y * 16, 
+              width:  32,
+              height: 32,
+            },
+          },
+        ),
+      )
+      }
+    });
+  });
+
+
+  player = new Player({
+    x: 70,
+    y: 140,
+    size: 16,
+    velocity: { x: 0, y: 0 },
+  });
+  
+  rockys =  [
+    new Rocky({
+      x: 528,
+      y: 224,
+      width: 50,
+      height: 50,
+    }),
+  ]
+  
+  explosiones = []
+  corazones = [
+    new Corazon({
+      x: 10, 
+      y: 10, 
+      width: 35, 
+      height: 35, 
+      imageSrc: './assets/entities/corazon.png', 
+      spriteCropbox: {
+        x: 0,
+        y: 0,
+        width: 80,
+        height: 80,
+        frames: 6,
+      },
+    }),
+    new Corazon({
+      x: 45, 
+      y: 10, 
+      width: 35, 
+      height: 35, 
+      imageSrc: './assets/entities/corazon.png', 
+      spriteCropbox: {
+        x: 0,
+        y: 0,
+        width: 80,
+        height: 80,
+        frames: 6,
+      },
+    }),
+    new Corazon({
+      x: 80, 
+      y: 10, 
+      width: 35, 
+      height: 35, 
+      imageSrc: './assets/entities/corazon.png', 
+      spriteCropbox: {
+        x: 0,
+        y: 0,
+        width: 80,
+        height: 80,
+        frames: 6,
+      },
+    })
+  ]
+
+  camera = { x: 0, y: 0 };
+}
 function animate(backgroundCanvas) {
   const currentTime = performance.now();
   const deltaTime = (currentTime - lastTime) / 1000;
@@ -169,11 +344,92 @@ function animate(backgroundCanvas) {
   player.update(deltaTime, collisionBlocks);
 
   //actualizar posicion rocky
-  rocky.update(deltaTime, collisionBlocks);
+  for (let i = rockys.length - 1; i >= 0;  i--) {
+    const rocky = rockys[i]
+    rocky.update(deltaTime, collisionBlocks);
 
-  if (checkCollision(player, rocky)) {
-    player.velocity.y = -200
+    // Salta en un enemigo
+    const collisionDirection = checkCollision (player, rocky)
+    if (collisionDirection) {
+      if (collisionDirection === 'bottom' && !player.isOnGround) {
+      player.velocity.y = -150
+      explosiones.push(
+        new Explosion({
+          x: rocky.x, 
+          y: rocky.y, 
+          width: 32,
+          height: 32,
+          imageSrc: './assets/entities/explosion.png',
+          spriteCropbox: {
+            x: 0,
+            y: 0,
+            width: 52,
+            height: 51,
+            frames: 6,
+          },
+        }),
+      )
+      
+      rockys.splice(i, 1)
+    } else if (collisionDirection === 'left' || 
+      collisionDirection === 'right'
+    ) {
+      const fullCorazones = corazones.filter((corazon) => {
+        return !corazon.depleted
+      })
+
+      if (!player.isInvincible && fullCorazones.length > 0) {
+        fullCorazones[fullCorazones.length - 1].depleted = true
+      } else if (fullCorazones.length === 0) {
+        init()
+      }
+
+      player.setIsInvincible()
+    }
   }
+}
+
+  for (let i = explosiones.length - 1; i >= 0;  i--) {
+    const explosion = explosiones[i]
+    explosion.update(deltaTime)
+      
+    if (explosion.iteration === 1) {
+      explosiones.splice(i, 1)
+    }
+  }
+
+  for (let i = gems.length - 1; i >= 0;  i--) {
+    const gem = gems[i]
+    gem.update(deltaTime)
+
+    
+    const collisionDirection = checkCollision (player, gem)  
+    if (collisionDirection) {
+      //crea una animacion al agarrar la perla
+      explosiones.push(
+        new Explosion({
+          x: gem.x, 
+          y: gem.y, 
+          width: 18,
+          height: 18,
+          imageSrc: './assets/entities/perlaex.png',
+          spriteCropbox: {
+            x: 0,
+            y: 0,
+            width: 31,
+            height: 31,
+            frames: 5,
+          },
+        }),
+      )
+      //quita la perla del juego
+      gems.splice(i, 1)
+      gemCount++
+    }
+  }
+  
+
+  
 
   if (player.x > SCROLL_POST_RIGHT && player.x < 1485) {
     camera.x = player.x - SCROLL_POST_RIGHT;
@@ -195,11 +451,43 @@ function animate(backgroundCanvas) {
   c.drawImage(bramblebackgroundCanvas, camera.x * 0.16, 0);
   c.drawImage(backgroundCanvas, 0, 0);
   player.draw(c);
-  rocky.draw(c);
+
+  for (let i = rockys.length - 1; i >= 0;  i--) {
+    const rocky = rockys[i]
+    rocky.draw(c)
+  }
+
+  for (let i = explosiones.length - 1; i >= 0;  i--) {
+    const explosion = explosiones [i]
+    explosion.draw(c)
+  }
+
+  for (let i = gems.length - 1; i >= 0;  i--) {
+    const gem = gems [i]
+    gem.draw(c)
+  }
+
+  
+
+  
   c.restore();
 
-  requestAnimationFrame(() => animate(backgroundCanvas));
+  //UI guardar y restaurar
+  c.save();
+  c.scale(dpr + 2, dpr + 2);
+  for (let i = corazones.length - 1; i >= 0;  i--) {
+    const corazon = corazones [i]
+    corazon.draw(c)
+  }
+
+  gemUI.draw(c)
+  c.fillText(gemCount, 40, 67)
+  c.restore();
+  requestAnimationFrame(() => animate(backgroundCanvas)); 
 }
+
+
+
 
 const startRendering = async () => {
   try {
@@ -212,4 +500,5 @@ const startRendering = async () => {
   }
 };
 
+init()
 startRendering();
