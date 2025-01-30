@@ -6,8 +6,8 @@ class Player {
   constructor({ x, y, size, velocity = { x: 0, y: 0 } }) {
     this.x = x
     this.y = y
-    this.width = 60 
-    this.height = 60
+    this.width = 45 
+    this.height = 45
     this.velocity = velocity
     this.isOnGround = false
     this.isImageLoaded = false
@@ -53,8 +53,8 @@ class Player {
     this.hitbox = {
       x: 0,
       y: 0,
-      width: 30,
-      height: 52,
+      width: 25,
+      height: 37,
     }
     this.isInvincible = false
   }
@@ -116,7 +116,7 @@ class Player {
     }
 
     //Posicion de la hitbox
-    this.hitbox.x = this.x + 17
+    this.hitbox.x = this.x + 13
     this.hitbox.y = this.y + 8
 
     this.applyGravity(deltaTime)
@@ -227,14 +227,14 @@ class Player {
         // Check collision while player is going left
         if (this.velocity.x < -0) {
           this.hitbox.x = collisionBlock.x + collisionBlock.width + buffer
-          this.x = this.hitbox.x - 17
+          this.x = this.hitbox.x - 14
           break
         }
 
         // Check collision while player is going right
         if (this.velocity.x > 0) {
           this.hitbox.x = collisionBlock.x - this.hitbox.width - buffer
-          this.x = this.hitbox.x - 17
+          this.x = this.hitbox.x - 14
           break
         }
       }

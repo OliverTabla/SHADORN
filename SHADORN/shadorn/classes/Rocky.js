@@ -33,8 +33,8 @@ class Rocky {
     this.hitbox = {
       x: 0,
       y: 0,
-      width: 30,
-      height: 30,
+      width: 25,
+      height: 33,
     }
     this.distanceTraveled = 0
     this.turningDistance = turningDistance
@@ -85,8 +85,8 @@ class Rocky {
     }
 
     //Posicion de la hitbox
-    this.hitbox.x = this.x + 10
-    this.hitbox.y = this.y + 20
+    this.hitbox.x = this.x + 7
+    this.hitbox.y = this.y + 7
 
     this.applyGravity(deltaTime)
 
@@ -166,14 +166,13 @@ class Rocky {
         // Check collision while player is going left
         if (this.velocity.x < -0) {
           this.hitbox.x = collisionBlock.x + collisionBlock.width + buffer
-          this.x = this.hitbox.x - 10
-          break
+          this.x = this.hitbox.x - 7
         }
 
         // Check collision while player is going right
         if (this.velocity.x > 0) {
           this.hitbox.x = collisionBlock.x - this.hitbox.width - buffer
-          this.x = this.hitbox.x - 10
+          this.x = this.hitbox.x - 7
           break
         }
       }

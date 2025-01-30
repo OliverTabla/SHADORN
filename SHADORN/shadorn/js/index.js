@@ -2,7 +2,7 @@ const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 const dpr = window.devicePixelRatio || 1;
 
-const gameWidth = 1920; // Ancho del mapa original
+const gameWidth = 2400; // Ancho del mapa original
 const gameHeight = 1080; // Altura del mapa original
 
 function resizeCanvas() {
@@ -24,31 +24,26 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 const oceanLayerData = {
-  l_Sky_Ocean: l_Sky_Ocean,
+  l_New_Layer_2: l_New_Layer_2,
 };
 
-const BrambleLayerData = {
-  l_Bramble: l_Bramble,
-};
+//const BrambleLayerData = {
+  //l_Bramble: l_Bramble,
+//};
 
 const layersData = {
-  l_Back_Tiles: l_Back_Tiles,
-  l_Front_Tiles: l_Front_Tiles,
-  l_Decorations: l_Decorations,
-  l_Front_Tiles_2: l_Front_Tiles_2,
-  l_Gems: l_Gems,
-  l_Collisions: l_Collisions,
+  l_New_Layer_2: l_New_Layer_2,
+   l_New_Layer_1: l_New_Layer_1,
+   l_New_Layer_3: l_New_Layer_3,
+   l_New_Layer_4: l_New_Layer_4,
+   l_New_Layer_5: l_New_Layer_5,
 };
 
 const tilesets = {
-  l_Sky_Ocean: { imageUrl: './images/decorations.png', tileSize: 16 },
-  l_Bramble: { imageUrl: './images/decorations.png', tileSize: 16 },
-  l_Back_Tiles: { imageUrl: './images/tileset.png', tileSize: 16 },
-  l_Front_Tiles: { imageUrl: './images/tileset.png', tileSize: 16 },
-  l_Decorations: { imageUrl: './images/decorations.png', tileSize: 16 },
-  l_Front_Tiles_2: { imageUrl: './images/tileset.png', tileSize: 16 },
-  //l_Gems: { imageUrl: './images/decorations.png', tileSize: 16 },
-  l_Collisions: { imageUrl: './images/decorations.png', tileSize: 16 },
+  l_New_Layer_2: { imageUrl: './images/decorations.png', tileSize: 16 },
+  l_New_Layer_1: { imageUrl: './images/tileset.png', tileSize: 16 },
+  l_New_Layer_3: { imageUrl: './images/tileset.png', tileSize: 16 },
+  //l_New_Layer_4: { imageUrl: './images/tileset.png', tileSize: 16 },
 };
 
 const collisionBlocks = [];
@@ -137,10 +132,10 @@ let player = new Player({
 
 let rockys =  [
   new Rocky({
-    x: 528,
-    y: 224,
-    width: 50,
-    height: 50,
+    x: 560,
+    y: 208,
+    width: 40,
+    height: 40,
   }),
 ]
 
@@ -239,9 +234,9 @@ function init() {
     },
   })
 
-  l_Gems.forEach((row, y) => {
+  l_New_Layer_4.forEach((row, y) => {
     row.forEach((symbol, x) => {
-      if (symbol === 18) {
+      if (symbol === 13) {
         gems.push(
           new Explosion({
             x: x * 16, 
@@ -280,9 +275,9 @@ function init() {
   rockys =  [
     new Rocky({
       x: 528,
-      y: 224,
-      width: 50,
-      height: 50,
+      y: 208,
+      width: 40,
+      height: 40,
     }),
   ]
   
@@ -357,8 +352,8 @@ function animate(backgroundCanvas) {
         new Explosion({
           x: rocky.x, 
           y: rocky.y, 
-          width: 32,
-          height: 32,
+          width: 40,
+          height: 40,
           imageSrc: './assets/entities/explosion.png',
           spriteCropbox: {
             x: 0,
@@ -431,7 +426,7 @@ function animate(backgroundCanvas) {
 
   
 
-  if (player.x > SCROLL_POST_RIGHT && player.x < 1485) {
+  if (player.x > SCROLL_POST_RIGHT && player.x < 1800) {
     camera.x = player.x - SCROLL_POST_RIGHT;
   }
 
@@ -448,7 +443,7 @@ function animate(backgroundCanvas) {
   c.scale(dpr + 2, dpr + 2)
   c.translate(-camera.x, camera.y);
   c.drawImage(oceanbackgroundCanvas, camera.x * 0.32, 0);
-  c.drawImage(bramblebackgroundCanvas, camera.x * 0.16, 0);
+  //c.drawImage(bramblebackgroundCanvas, camera.x * 0.16, 0);
   c.drawImage(backgroundCanvas, 0, 0);
   player.draw(c);
 
@@ -479,7 +474,6 @@ function animate(backgroundCanvas) {
     const corazon = corazones [i]
     corazon.draw(c)
   }
-
   gemUI.draw(c)
   c.fillText(gemCount, 40, 67)
   c.restore();
@@ -492,7 +486,7 @@ function animate(backgroundCanvas) {
 const startRendering = async () => {
   try {
     oceanbackgroundCanvas = await renderStaticLayers(oceanLayerData);
-    bramblebackgroundCanvas = await renderStaticLayers(BrambleLayerData);
+    //bramblebackgroundCanvas = await renderStaticLayers(BrambleLayerData);
     const backgroundCanvas = await renderStaticLayers(layersData);
     animate(backgroundCanvas);
   } catch (error) {
