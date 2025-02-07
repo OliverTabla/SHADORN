@@ -2,8 +2,8 @@ const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 const dpr = window.devicePixelRatio || 1;
 
-const gameWidth = 2400; // Ancho del mapa original
-const gameHeight = 1080; // Altura del mapa original
+const gameWidth = 5350; // Ancho del mapa original
+const gameHeight = 2080; // Altura del mapa original
 
 function resizeCanvas() {
   const scaleX = window.innerWidth / gameWidth;
@@ -24,7 +24,7 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 const oceanLayerData = {
-  l_New_Layer_2: l_New_Layer_2,
+  l_fondo: l_fondo,
 };
 
 //const BrambleLayerData = {
@@ -32,18 +32,31 @@ const oceanLayerData = {
 //};
 
 const layersData = {
-  l_New_Layer_2: l_New_Layer_2,
-   l_New_Layer_1: l_New_Layer_1,
-   l_New_Layer_3: l_New_Layer_3,
-   l_New_Layer_4: l_New_Layer_4,
-   l_New_Layer_5: l_New_Layer_5,
+  //l_fondo: l_fondo,
+  l_decoracion_atras: l_decoracion_atras,
+  l_decoracion_atras_2: l_decoracion_atras_2,
+  //l_lava: l_lava,
+  l_suelo: l_suelo,
+  //l_pinchos: l_pinchos,
+  l_decoracion_delante: l_decoracion_delante,
+  l_decoracion_delantera_2: l_decoracion_delantera_2,
+  l_colisiones: l_colisiones,
+  //l_Gems: l_Gems,
+  l_META: l_META,
 };
 
 const tilesets = {
-  l_New_Layer_2: { imageUrl: './images/decorations.png', tileSize: 16 },
-  l_New_Layer_1: { imageUrl: './images/tileset.png', tileSize: 16 },
-  l_New_Layer_3: { imageUrl: './images/tileset.png', tileSize: 16 },
-  //l_New_Layer_4: { imageUrl: './images/tileset.png', tileSize: 16 },
+  l_fondo: { imageUrl: './images/decorations.png', tileSize: 16 },
+  l_decoracion_atras: { imageUrl: './images/public', tileSize: 16 },
+  l_decoracion_atras_2: { imageUrl: './images/decorations.png', tileSize: 16 },
+  l_lava: { imageUrl: './images/public', tileSize: 16 },
+  l_suelo: { imageUrl: './images/public', tileSize: 16 },
+  l_pinchos: { imageUrl: './images/public', tileSize: 16 },
+  l_decoracion_delante: { imageUrl: './images/public', tileSize: 16 },
+  l_decoracion_delantera_2: { imageUrl: './images/decorations.png', tileSize: 16 },
+  l_colisiones: { imageUrl: './images/public', tileSize: 16 },
+  l_Gems: { imageUrl: './images/decorations.png', tileSize: 16 },
+  l_META: { imageUrl: './images/decorations.png', tileSize: 16 },
 };
 
 const collisionBlocks = [];
@@ -122,6 +135,102 @@ const renderStaticLayers = async (layersData) => {
 
   return offscreenCanvas;
 };
+//posicion de la lava
+let lava1 = []
+let lavas1 = []
+l_lava.forEach((row, y) => {
+  row.forEach((symbol, x) => {
+    if (symbol === 153) {
+      lavas1.push(
+        new Explosion({
+          x: x * 16, 
+          y: y * 16, 
+          width:  32,
+          height: 32,
+          imageSrc: './assets/entities/lava1.png',
+          spriteCropbox: {
+            x: 0,
+            y: 0,
+            width: 32,
+            height: 32,
+            frames: 1,
+          },
+          hitbox: {
+            x: x * 16, 
+            y: y * 16, 
+            width:  24,
+            height: 32,
+          },
+        },
+      ),
+    )
+    }
+  });
+});
+
+let lava2 = []
+let lavas2 = []
+l_lava.forEach((row, y) => {
+  row.forEach((symbol, x) => {
+    if (symbol === 155) {
+      lavas2.push(
+        new Explosion({
+          x: x * 16, 
+          y: y * 16, 
+          width:  32,
+          height: 32,
+          imageSrc: './assets/entities/lava2.png',
+          spriteCropbox: {
+            x: 0,
+            y: 0,
+            width: 31,
+            height: 31,
+            frames: 1,
+          },
+          hitbox: {
+            x: x * 16, 
+            y: y * 16, 
+            width:  32,
+            height: 32,
+          },
+        },
+      ),
+    )
+    }
+  });
+});
+//colocar pinchos
+let pincho = []
+let pinchos = []
+l_pinchos.forEach((row, y) => {
+  row.forEach((symbol, x) => {
+    if (symbol === 157) {
+      pinchos.push(
+        new Explosion({
+          x: x * 16, 
+          y: y * 16, 
+          width:  32,
+          height: 32,
+          imageSrc: './assets/entities/pincho.png',
+          spriteCropbox: {
+            x: 0,
+            y: 0,
+            width: 31,
+            height: 31,
+            frames: 1,
+          },
+          hitbox: {
+            x: x * 16, 
+            y: y * 16, 
+            width:  32,
+            height: 32,
+          },
+        },
+      ),
+    )
+    }
+  });
+});
 
 let player = new Player({
   x: 70,
@@ -234,9 +343,9 @@ function init() {
     },
   })
 
-  l_New_Layer_4.forEach((row, y) => {
+  l_Gems.forEach((row, y) => {
     row.forEach((symbol, x) => {
-      if (symbol === 13) {
+      if (symbol === 18) {
         gems.push(
           new Explosion({
             x: x * 16, 
@@ -263,7 +372,7 @@ function init() {
       }
     });
   });
-
+  
 
   player = new Player({
     x: 70,
@@ -357,7 +466,7 @@ function animate(backgroundCanvas) {
           imageSrc: './assets/entities/explosion.png',
           spriteCropbox: {
             x: 0,
-            y: 0,
+            y: -10,
             width: 52,
             height: 51,
             frames: 6,
@@ -422,11 +531,90 @@ function animate(backgroundCanvas) {
       gemCount++
     }
   }
+
+  for (let i = lavas1.length - 1; i >= 0;  i--) {
+    const lava1 = lavas1[i]
+    lava1.update(deltaTime)
+
+    
+    const collisionDirection = checkCollision (player, lava1)  
+    if (collisionDirection) {
+      //al tocar la lava1 te hace daño
+      if (collisionDirection === 'left' || 
+        collisionDirection === 'right' || 
+        collisionDirection === 'top' || 
+        collisionDirection === 'bottom') {
+        const fullCorazones = corazones.filter((corazon) => {
+          return !corazon.depleted
+        })
+  
+        if (!player.isInvincible && fullCorazones.length > 0) {
+          fullCorazones[fullCorazones.length - 1].depleted = true
+        } else if (fullCorazones.length === 0) {
+          init()
+        }
+  
+        player.setIsInvincible()
+      }
+    }
+  }
+
+  for (let i = lavas2.length - 1; i >= 0;  i--) {
+    const lava2 = lavas2[i]
+    lava2.update(deltaTime)
+
+    
+    const collisionDirection = checkCollision (player, lava2)  
+    if (collisionDirection) {
+      //al tocar la lava2 te hace daño
+      if (collisionDirection === 'left' || 
+        collisionDirection === 'right' || 
+        collisionDirection === 'top' || 
+        collisionDirection === 'bottom') {
+        const fullCorazones = corazones.filter((corazon) => {
+          return !corazon.depleted
+        })
+  
+        if (!player.isInvincible && fullCorazones.length > 0) {
+          fullCorazones[fullCorazones.length - 1].depleted = true
+        } else if (fullCorazones.length === 0) {
+          init()
+        }
+  
+        player.setIsInvincible()
+      }
+    }
+  }
+
+  for (let i = pinchos.length - 1; i >= 0;  i--) {
+    const pincho = pinchos[i]
+    pincho.update(deltaTime)
+
+    
+    const collisionDirection = checkCollision (player, pincho)  
+    if (collisionDirection) {
+      //al tocar el pincho te hace daño
+      if (collisionDirection === 'left' || 
+        collisionDirection === 'right' || 
+        collisionDirection === 'top' || 
+        collisionDirection === 'bottom') {
+        const fullCorazones = corazones.filter((corazon) => {
+          return !corazon.depleted
+        })
+  
+        if (!player.isInvincible && fullCorazones.length > 0) {
+          fullCorazones[fullCorazones.length - 1].depleted = true
+        } else if (fullCorazones.length === 0) {
+          init()
+        }
+  
+        player.setIsInvincible()
+      }
+    }
+  }
   
 
-  
-
-  if (player.x > SCROLL_POST_RIGHT && player.x < 1800) {
+  if (player.x > SCROLL_POST_RIGHT && player.x < 4800) {
     camera.x = player.x - SCROLL_POST_RIGHT;
   }
 
@@ -434,13 +622,13 @@ function animate(backgroundCanvas) {
     camera.y = SCROLL_POST_TOP - player.y;
   }
 
-  if (player.y > SCROLL_POST_BOTTOM) {
+  if (player.y > SCROLL_POST_BOTTOM && camera.y < 20) {
     camera.y = -(player.y - SCROLL_POST_BOTTOM);
   }
 
   c.save();
   c.clearRect(0, 0, canvas.width, canvas.height);
-  c.scale(dpr + 2, dpr + 2)
+  c.scale(dpr + 6, dpr + 6)
   c.translate(-camera.x, camera.y);
   c.drawImage(oceanbackgroundCanvas, camera.x * 0.32, 0);
   //c.drawImage(bramblebackgroundCanvas, camera.x * 0.16, 0);
@@ -462,6 +650,21 @@ function animate(backgroundCanvas) {
     gem.draw(c)
   }
 
+  for (let i = lavas1.length - 1; i >= 0;  i--) {
+    const lava1 = lavas1 [i]
+    lava1.draw(c)
+  }
+
+  for (let i = lavas2.length - 1; i >= 0;  i--) {
+    const lava2 = lavas2 [i]
+    lava2.draw(c)
+  }
+
+  for (let i = pinchos.length - 1; i >= 0;  i--) {
+    const pincho = pinchos [i]
+    pincho.draw(c)
+  }
+
   
 
   
@@ -469,7 +672,7 @@ function animate(backgroundCanvas) {
 
   //UI guardar y restaurar
   c.save();
-  c.scale(dpr + 2, dpr + 2);
+  c.scale(dpr + 6, dpr + 6);
   for (let i = corazones.length - 1; i >= 0;  i--) {
     const corazon = corazones [i]
     corazon.draw(c)

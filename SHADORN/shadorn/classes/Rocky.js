@@ -34,7 +34,7 @@ class Rocky {
       x: 0,
       y: 0,
       width: 25,
-      height: 33,
+      height: 32,
     }
     this.distanceTraveled = 0
     this.turningDistance = turningDistance
@@ -86,7 +86,7 @@ class Rocky {
 
     //Posicion de la hitbox
     this.hitbox.x = this.x + 7
-    this.hitbox.y = this.y + 7
+    this.hitbox.y = this.y + 8
 
     this.applyGravity(deltaTime)
 
