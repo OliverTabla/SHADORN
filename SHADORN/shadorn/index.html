@@ -4,7 +4,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SHADORN</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/crono.css">
   <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
 </head>
 <body>
   <br>
@@ -12,7 +17,24 @@
     <li class="cabecera"><a href="clasificacion.html">Tabla de clasificacion</a></li>
     <li class="cabecera"><a href="controles.html">Controles</a></li>
     <li class="cabecera"><a href="contenido.html">Contenido</a></li>
+    
   </ul>
+ <body class="crono">
+  <div class="crono">
+    <div class="tiempo" id="tiempo">00:00:00.000</div>
+      <div class="botones-contenedor">
+        <div class="btn" onclick="iniciar()">
+          <i class="fas fa-play"></i>
+        </div>
+        <div class="btn" onclick="pausar()">
+          <i class="fas fa-pause"></i>
+        </div>
+        <div class="btn" onclick="reiniciar()">
+          <i class="fas fa-undo-alt"></i>
+        </div>
+      </div>
+  </div>
+ </body>
 
   
 <canvas style="image-rendering: pixelated"></canvas>
@@ -35,9 +57,7 @@
 <script src="./classes/Rocky.js"></script>
 <script src="./classes/explosion.js"></script>
 <script src="./classes/heart.js"></script>
-
-
-
+<script src="./js/crono.js"></script>
 <script src="./js/index.js"></script>
 <script src="./js/eventListeners.js"></script>
 </body>

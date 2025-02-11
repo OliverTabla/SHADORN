@@ -4,7 +4,7 @@ const ROCKY_GRAVITY = 580
 
 class Rocky {
   constructor({ x, y, width, height, velocity = { x: ROCKY_X_VELOCITY, y: 0 } },
-    turningDistance = 200,) {
+    turningDistance = 170,) {
     this.x = x
     this.y = y
     this.width = width

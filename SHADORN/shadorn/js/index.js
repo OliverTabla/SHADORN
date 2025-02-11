@@ -177,7 +177,7 @@ l_lava.forEach((row, y) => {
         new Explosion({
           x: x * 16, 
           y: y * 16, 
-          width:  32,
+          width:  33,
           height: 32,
           imageSrc: './assets/entities/lava2.png',
           spriteCropbox: {
@@ -241,8 +241,20 @@ let player = new Player({
 
 let rockys =  [
   new Rocky({
-    x: 560,
-    y: 208,
+    x: 448,
+    y: 192,
+    width: 40,
+    height: 40,
+  }),
+  new Rocky({
+    x: 832,
+    y: 160,
+    width: 40,
+    height: 40,
+  }),
+  new Rocky({
+    x: 1520,
+    y: 160,
     width: 40,
     height: 40,
   }),
@@ -383,8 +395,20 @@ function init() {
   
   rockys =  [
     new Rocky({
-      x: 528,
-      y: 208,
+      x: 448,
+      y: 192,
+      width: 40,
+      height: 40,
+    }),
+    new Rocky({
+      x: 832,
+      y: 160,
+      width: 40,
+      height: 40,
+    }),
+    new Rocky({
+      x: 1520,
+      y: 160,
       width: 40,
       height: 40,
     }),

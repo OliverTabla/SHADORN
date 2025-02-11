@@ -53,7 +53,7 @@ class Player {
     this.hitbox = {
       x: 0,
       y: 0,
-      width: 22,
+      width: 15,
       height: 32,
     }
     this.isInvincible = false
@@ -68,11 +68,11 @@ class Player {
 
   draw(c) {
     // CUADRADO ROJO PARA PRUEBAS
-    c.fillStyle = 'rgba(255, 0, 0, 0.5)'
-    c.fillRect(this.x, this.y, this.width, this.height)
+    //c.fillStyle = 'rgba(255, 0, 0, 0.5)'
+    //c.fillRect(this.x, this.y, this.width, this.height)
     //hitbox
-    c.fillStyle = 'rgba(2, 0, 126, 0.5)'
-    c.fillRect(this.hitbox.x, this.hitbox.y, this.hitbox.width, this.hitbox.height)
+    //c.fillStyle = 'rgba(2, 0, 126, 0.5)'
+    //c.fillRect(this.hitbox.x, this.hitbox.y, this.hitbox.width, this.hitbox.height)
 
     if (this.imageLoaded === true) {
       let xScale = 1
@@ -116,7 +116,7 @@ class Player {
     }
 
     //Posicion de la hitbox
-    this.hitbox.x = this.x + 11
+    this.hitbox.x = this.x + 15
     this.hitbox.y = this.y + 8
 
     this.applyGravity(deltaTime)
@@ -227,14 +227,14 @@ class Player {
         // Check collision while player is going left
         if (this.velocity.x < -0) {
           this.hitbox.x = collisionBlock.x + collisionBlock.width + buffer
-          this.x = this.hitbox.x - 11
+          this.x = this.hitbox.x - 15
           break
         }
 
         // Check collision while player is going right
         if (this.velocity.x > 0) {
           this.hitbox.x = collisionBlock.x - this.hitbox.width - buffer
-          this.x = this.hitbox.x - 11
+          this.x = this.hitbox.x - 15
           break
         }
       }
