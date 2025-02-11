@@ -11,6 +11,7 @@ body,html{
   margin: 0;
 
 }
+
 li.cabecera{
   display: inline; 
   border: 5px solid black;
@@ -34,17 +35,12 @@ ul.cabecera,li{
 
 
 canvas { /* Usa un porcentaje más flexible */
-  max-width: 80%; /* Define un ancho máximo para pantallas grandes */
-  max-height: 80%; /* Ajusta dinámicamente según la altura de la pantalla */
+  max-width: 90%; /* Define un ancho máximo para pantallas grandes */
+  max-height: 90%; /* Ajusta dinámicamente según la altura de la pantalla */
   border: 5px solid rgb(0, 0, 0);
 }
 
-body.contenido{
-  background: linear-gradient(90deg, #0f0f0f, #1a1a1a);
-  color: white;
-  text-align: center;
-  padding-top: 80px;
-}
+
 
 
 

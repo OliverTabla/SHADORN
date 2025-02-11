@@ -222,6 +222,38 @@ l_pinchos.forEach((row, y) => {
           hitbox: {
             x: x * 16, 
             y: y * 16, 
+            width:  24,
+            height: 24,
+          },
+        },
+      ),
+    )
+    }
+  });
+});
+//colocar la meta
+let meta = []
+let metas = []
+l_META.forEach((row, y) => {
+  row.forEach((symbol, x) => {
+    if (symbol === 52) {
+      metas.push(
+        new Explosion({
+          x: x * 16, 
+          y: y * 16, 
+          width:  32,
+          height: 32,
+          imageSrc: './assets/entities/meta.png',
+          spriteCropbox: {
+            x: 0,
+            y: 0,
+            width: 31,
+            height: 31,
+            frames: 1,
+          },
+          hitbox: {
+            x: x * 16, 
+            y: y * 16, 
             width:  32,
             height: 32,
           },
@@ -385,6 +417,37 @@ function init() {
     });
   });
   
+  let meta = []
+let metas = []
+l_META.forEach((row, y) => {
+  row.forEach((symbol, x) => {
+    if (symbol === 52) {
+      meta.push(
+        new Explosion({
+          x: x * 16, 
+          y: y * 16, 
+          width:  64,
+          height: 64,
+          imageSrc: './assets/entities/meta.png',
+          spriteCropbox: {
+            x: 0,
+            y: 0,
+            width: 31,
+            height: 31,
+            frames: 1,
+          },
+          hitbox: {
+            x: x * 16, 
+            y: y * 16, 
+            width:  64,
+            height: 64,
+          },
+        },
+      ),
+    )
+    }
+  });
+});
 
   player = new Player({
     x: 70,
@@ -636,6 +699,23 @@ function animate(backgroundCanvas) {
       }
     }
   }
+
+  for (let i = metas.length - 1; i >= 0;  i--) {
+    const meta = metas[i]
+    meta.update(deltaTime)
+
+    
+    const collisionDirection = checkCollision (player, meta)  
+    if (collisionDirection) {
+      //al tocar la meta acaba el contador
+      if (collisionDirection === 'left' || 
+        collisionDirection === 'right' || 
+        collisionDirection === 'top' || 
+        collisionDirection === 'bottom') {
+        cronometrar = false
+      }
+    }
+  }
   
 
   if (player.x > SCROLL_POST_RIGHT && player.x < 4800) {
@@ -652,7 +732,7 @@ function animate(backgroundCanvas) {
 
   c.save();
   c.clearRect(0, 0, canvas.width, canvas.height);
-  c.scale(dpr + 6, dpr + 6)
+  c.scale(dpr + 7, dpr + 6)
   c.translate(-camera.x, camera.y);
   c.drawImage(oceanbackgroundCanvas, camera.x * 0.32, 0);
   //c.drawImage(bramblebackgroundCanvas, camera.x * 0.16, 0);
@@ -689,6 +769,11 @@ function animate(backgroundCanvas) {
     pincho.draw(c)
   }
 
+  for (let i = metas.length - 1; i >= 0;  i--) {
+    const meta = metas [i]
+    meta.draw(c)
+  }
+
   
 
   
@@ -696,7 +781,7 @@ function animate(backgroundCanvas) {
 
   //UI guardar y restaurar
   c.save();
-  c.scale(dpr + 6, dpr + 6);
+  c.scale(dpr + 6, dpr + 5);
   for (let i = corazones.length - 1; i >= 0;  i--) {
     const corazon = corazones [i]
     corazon.draw(c)

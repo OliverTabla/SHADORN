@@ -1,32 +1,9 @@
-* {
-    transition: all 0.3s;
-}
-
 body.crono {
     min-height: 100vh;
     display: block;
     justify-content: center;
     align-items: center;
-    font-size: 300%;
+    font-size: 200%;
     font-family: arial;
     color: white;
-}
-
-.marco {
-    border-radius: 30px;
-    background: black;
-    padding: 30px;
-    border: 5px solid rgb(0, 0, 0);
-}
-
-.botones-contenedor {
-    display: flex;
-    justify-content: space-around;
-}
-
-.btn {
-    cursor: pointer;
-    display: inline-block;
-    font-size: 60%;
-    padding: 20px;
 }

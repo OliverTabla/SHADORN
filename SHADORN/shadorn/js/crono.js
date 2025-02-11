@@ -2,6 +2,7 @@ let tiempoRef = Date.now()
 let cronometrar = false
 let acumulado = 0
 
+
 function iniciar() {
     cronometrar = true
 }
