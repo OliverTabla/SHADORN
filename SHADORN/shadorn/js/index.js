@@ -1,3 +1,4 @@
+
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 const dpr = window.devicePixelRatio || 1;
@@ -42,7 +43,7 @@ const layersData = {
   l_decoracion_delantera_2: l_decoracion_delantera_2,
   l_colisiones: l_colisiones,
   //l_Gems: l_Gems,
-  l_META: l_META,
+  //l_META: l_META,
 };
 
 const tilesets = {
@@ -417,7 +418,7 @@ function init() {
     });
   });
   
-  let meta = []
+let meta = []
 let metas = []
 l_META.forEach((row, y) => {
   row.forEach((symbol, x) => {
@@ -712,7 +713,7 @@ function animate(backgroundCanvas) {
         collisionDirection === 'right' || 
         collisionDirection === 'top' || 
         collisionDirection === 'bottom') {
-        cronometrar = false
+        pausar();
       }
     }
   }
@@ -806,5 +807,7 @@ const startRendering = async () => {
   }
 };
 
+
 init()
+iniciar()
 startRendering();

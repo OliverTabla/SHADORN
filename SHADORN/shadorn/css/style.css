@@ -12,6 +12,18 @@ body,html{
 
 }
 
+#empezar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 120px;
+  border-radius: 10px;
+}
+
 li.cabecera{
   display: inline; 
   border: 5px solid black;

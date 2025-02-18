@@ -1,22 +1,18 @@
 
-
 window.addEventListener('keydown', (event) => {
   switch (event.key) {
     case ' ':
     case 'w':
     case 'W':
       player.jump();
-      iniciar();
       keys.w.pressed = true;
       break;
     case 'a':
     case 'A':
-      iniciar();
       keys.a.pressed = true;
       break;
     case 'd':
     case 'D':
-      iniciar();
       keys.d.pressed = true;
       break;
     case 'r':
@@ -24,6 +20,7 @@ window.addEventListener('keydown', (event) => {
       init();
       reiniciar();
       pausar();
+      iniciar();
       keys.r.pressed = true;
       break;
   }
