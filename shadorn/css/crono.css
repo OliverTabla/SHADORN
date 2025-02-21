@@ -1,0 +1,9 @@
+body.crono {
+    min-height: 100vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    font-size: 200%;
+    font-family: arial;
+    color: white;
+}

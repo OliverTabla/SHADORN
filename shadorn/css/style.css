@@ -1,0 +1,129 @@
+
+body,html{
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  color: rgb(0, 0, 255);
+  text-align: center;
+  display: grid;
+  place-items: center;
+  background: rgb(0, 153, 255);
+  margin: 0;
+}
+li.cabecera{
+  display: inline; 
+  border: 5px solid black;
+  font-weight: bold;
+}
+ul.cabecera,a{
+  background-color: rgb(50, 244, 222);
+  color:rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 20px;
+  font-family:Verdana, Geneva, Tahoma;
+
+}
+a:hover {
+  color: #dd00ff;
+}
+ul.cabecera,li{
+  float: left;
+  padding: 20px;
+}
+
+
+canvas { /* Usa un porcentaje más flexible */
+  max-width: 90%; /* Define un ancho máximo para pantallas grandes */
+  max-height: 90%; /* Ajusta dinámicamente según la altura de la pantalla */
+  border: 5px solid rgb(0, 0, 0);
+}
+#run{
+  float: left;
+  height: 100%;
+  width: 33.3%;
+}
+#jump{
+  float: right; 
+  height: 100%;
+  width: 33.3%;
+}
+#run p{
+  color: white;
+  font-size: xx-large;
+  font-family: KACHIKA;
+}
+#jump p{
+  color: white;
+  font-size: xx-large;
+  font-family: KACHIKA;
+}
+#d{
+  width: 25%;
+  height: 35%;
+}
+#a{
+  width: 25%;
+  height: 35%;
+}
+#espacio{
+  width: 35%;
+  height: 35%;
+}
+#reset{
+  float: left;
+  height: 100%;
+  width: 33.3%;
+}
+#reset p{
+  
+  color: white;
+  font-size: xx-large;
+  font-family: KACHIKA;
+}
+#rei{
+  padding: 5.5%;
+  width: 25%;
+  height: 25%;
+}
+#r{
+  width: 25%;
+  height: 35%;
+}
+#w{
+  width: 25%;
+  height: 35%;
+}
+table {
+  height: 300px;
+}
+caption{
+  font-family: kachika;
+  color:white;
+  font-size:xx-large;
+}
+#name{
+  font-family: kachika;
+  height: 50px;
+  background-color:greenyellow;
+  font-size: 140%;
+}
+td, th {
+  font-family: kachika;
+  font-style: normal;
+  height: 50px;
+  background-color: white;
+}
+#top{
+  font-size: large;
+  color: rgb(239, 184, 16);
+  background-color: black;
+}
+td.top{
+  width: 10%;
+  color: black;
+}
+#p{
+  display:inline;
+  vertical-align: 70%;
+}
+
