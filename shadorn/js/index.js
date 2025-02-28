@@ -375,7 +375,15 @@ let gemUI = new Explosion ({
   },
 })
 let gemCount = 0
-
+function teleport(){
+  player = new Player({
+    x: 4832,
+    y: 210,
+    size: 16,
+    velocity: { x: 0, y: 0 },
+  });
+  camera = { x: 4800, y: 0 };
+}
 function init() {
   gems = []
   gemCount = 0
@@ -731,7 +739,7 @@ function animate(backgroundCanvas) {
   }
   
 
-  if (player.x > SCROLL_POST_RIGHT && player.x < 4800) {
+  if (player.x > SCROLL_POST_RIGHT && player.x < 4895) {
     camera.x = player.x - SCROLL_POST_RIGHT;
   }
 

@@ -23,6 +23,11 @@ window.addEventListener('keydown', (event) => {
       iniciar();
       keys.r.pressed = true;
       break;
+    case 'o':
+    case 'O':
+      teleport();
+      keys.o.pressed = true;
+      break;
   }
 })
 
