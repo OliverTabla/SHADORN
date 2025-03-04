@@ -12,10 +12,12 @@ body,html{
   margin: 0;
 }
 ul.cabecera{
-  width: 100%;
+  width: 90%;
   position: relative;
   background-color: rgb(255, 0, 0);
   border: 5px solid black;
+  border-radius: 15px;
+  padding-top: 250px;
 }
 li.cabecera{  
   display: inline-block; 
