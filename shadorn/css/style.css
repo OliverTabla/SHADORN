@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 body,html{
   width: 100%;
@@ -10,32 +11,40 @@ body,html{
   background: rgb(0, 153, 255);
   margin: 0;
 }
-li.cabecera{
-  display: inline; 
+ul.cabecera{
+  width: 100%;
+  position: relative;
+  background-color: rgb(255, 0, 0);
+  border: 5px solid black;
+}
+li.cabecera{  
+  display: inline-block; 
   border: 5px solid black;
   font-weight: bold;
+  background-color: rgb(217, 255, 0);
+  border-radius: 15px;
 }
 ul.cabecera,a{
-  background-color: rgb(50, 244, 222);
   color:rgb(0, 0, 0);
   text-decoration: none;
   font-size: 20px;
-  font-family:Verdana, Geneva, Tahoma;
+  font-family:"Pixelify Sans", sans-serif;
 
 }
 a:hover {
   color: #dd00ff;
 }
 ul.cabecera,li{
-  float: left;
+  margin-top: 0%;
   padding: 20px;
 }
 
 
 canvas { /* Usa un porcentaje más flexible */
-  max-width: 90%; /* Define un ancho máximo para pantallas grandes */
+  max-width: 85%; /* Define un ancho máximo para pantallas grandes */
   max-height: 90%; /* Ajusta dinámicamente según la altura de la pantalla */
   border: 5px solid rgb(0, 0, 0);
+  border-radius: 15px;
 }
 #run{
   float: left;
@@ -50,12 +59,12 @@ canvas { /* Usa un porcentaje más flexible */
 #run p{
   color: white;
   font-size: xx-large;
-  font-family: KACHIKA;
+  font-family: "Pixelify Sans", sans-serif;
 }
 #jump p{
   color: white;
   font-size: xx-large;
-  font-family: KACHIKA;
+  font-family: "Pixelify Sans", sans-serif;
 }
 #d{
   width: 25%;
@@ -75,10 +84,9 @@ canvas { /* Usa un porcentaje más flexible */
   width: 33.3%;
 }
 #reset p{
-  
   color: white;
   font-size: xx-large;
-  font-family: KACHIKA;
+  font-family: "Pixelify Sans", sans-serif;
 }
 #rei{
   padding: 5.5%;
@@ -95,23 +103,26 @@ canvas { /* Usa un porcentaje más flexible */
 }
 table {
   height: 300px;
+  width: 1000px;
 }
 caption{
-  font-family: kachika;
+  font-family: "Pixelify Sans", sans-serif;
   color:white;
   font-size:xx-large;
 }
 #name{
-  font-family: kachika;
+  font-family: "Pixelify Sans", sans-serif;
   height: 50px;
   background-color:greenyellow;
   font-size: 140%;
 }
 td, th {
-  font-family: kachika;
+  font-family: "Pixelify Sans", sans-serif;
   font-style: normal;
   height: 50px;
   background-color: white;
+  border: solid 5px black;
+  border-radius: 5px;
 }
 #top{
   font-size: large;
@@ -126,4 +137,16 @@ td.top{
   display:inline;
   vertical-align: 70%;
 }
-
+video{
+  height: 90%;
+  width: 80%;
+  border: solid 5px black;
+  border-radius: 10px;
+}
+a.name{
+  background-color: transparent;
+  font-family: "Pixelify Sans", sans-serif;
+}
+#domi{
+  font-size: medium;
+}
