@@ -20,23 +20,27 @@
     <form class="form" action="enviarvideo.php" method="POST" enctype="multipart/form-data">
       <h2>¡Envia tu record aqui!</h2>
       <p>
-        Envia tu mejor tiempo para poder tener la posibilidad de entrar entre los 10 mejores tiempos
+        Envia tu mejor tiempo para poder tener la posibilidad de entrar entre los 10 mejores tiempos.
       </p>
+      
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" class="box" required>
-     
+      <input type="text" name="nombre" id="nombre" class="box" required>
+      
       <label for="correo">Correo electronico:</label>
-      <input type="email" id="correo" class="box" required>
-     
+      <input type="email" name="correo" id="correo" class="box" required>
+      
       <label for="mensaje">¡Escribe tu record aqui!</label>
-      <input type="text" id="mensaje"class="box" required>
-   
+      <input type="text" name="mensaje" id="mensaje" class="box" required>
+
+      <label for="opinion">¿Que opinas de nuestra web y que mejorarias?</label>
+      <input type="text" name="opinion" id="opinion" class="box">
+      
       <label for="video">Inserta tu video aqui:</label>
-      <input class="archivo" type="file" id="video" accept="video/*" required>
+      <input class="archivo" type="file" name="video" id="video" accept="video/*" required>
       
       <input type="submit" value="Enviar" class="submit">
-      
     </form>
+    
   </div>
 </body>
 </html>
