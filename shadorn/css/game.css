@@ -1,0 +1,28 @@
+
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+div.crono {
+    position: absolute;
+    z-index: 1;
+    margin-left: 80%;
+    top: 35px;
+    width: 200px;
+    height: 35px;
+    font-size: 200%;
+    font-family: "Jersey 15";
+    color: rgb(0, 0, 0);
+    text-align: center;
+    justify-content: right;
+    align-items: top;
+}
+
+div.java { /* Usa un porcentaje más flexible */
+    position: absolute;
+    display: block;
+    height: 100vh;
+  }

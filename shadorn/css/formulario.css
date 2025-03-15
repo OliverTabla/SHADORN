@@ -1,18 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
 
 *{
-    font-family:"Pixelify Sans", sans-serif;
+    font-family:"jersey 15";
 }
 
 .container{
     display: flex;
     background-color: white;
-    height: 670px;
+    height: 800px;
     width: 1000px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0);
     margin: auto;
-    margin-top: 80px;
+    margin-top: 10px;
     border-radius: 25px;
+    margin-bottom: 80px;
 }
 
 .form{
