@@ -6,7 +6,7 @@ const loadImage = (src) => {
     img.src = src
   })
 }
-
+//Detecta la colision entre 2 objectos
 function checkCollision(object1, object2) {
   const isColliding = 
     object1.hitbox.x + object1.hitbox.width >= object2.hitbox.x && 

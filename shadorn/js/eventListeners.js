@@ -1,4 +1,4 @@
-
+//detecta cuando pulsa una tecla
 window.addEventListener('keydown', (event) => {
   switch (event.key) {
     case ' ':
@@ -44,9 +44,8 @@ window.addEventListener('keyup', (event) => {
   }
 })
 
-// On return to game's tab, ensure delta time is reset
+
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
-
   }
 })

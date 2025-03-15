@@ -2,7 +2,6 @@ let tiempoRef = Date.now()
 let cronometrar = false
 let acumulado = 0
 
-
 function iniciar() {
     cronometrar = true
 }
@@ -16,7 +15,7 @@ function reiniciar() {
 }
 
 setInterval(() => {
-    let tiempo = document.getElementById("tiempo")
+    let tiempo = document.getElementById("time")
     if (cronometrar) {
         acumulado += Date.now() - tiempoRef
     }
