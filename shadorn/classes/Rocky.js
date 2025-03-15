@@ -1,5 +1,5 @@
 const ROCKY_X_VELOCITY = 40
-const ROCKY_JUMP_POWER = 350
+const ROCKY_JUMP_POWER = 450
 const ROCKY_GRAVITY = 580
 
 class Rocky {
@@ -90,14 +90,14 @@ class Rocky {
 
     this.applyGravity(deltaTime)
 
-    // Update horizontal position and check collisions
+   // Actualiza la posicion horizontal y revisa las colisiones
     this.updateHorizontalPosition(deltaTime)
     this.checkForHorizontalCollisions(collisionBlocks)
 
-    // Check for any platform collisions
+    // mira si detecta colisiones con las plataformas
     this.checkPlatformCollisions(platforms, deltaTime)
 
-    // Update vertical position and check collisions
+    // actualiza la posicion vertical y revisa las colisiones
     this.updateVerticalPosition(deltaTime)
     this.checkForVerticalCollisions(collisionBlocks)
     this.determineDirection()
@@ -156,20 +156,20 @@ class Rocky {
     for (let i = 0; i < collisionBlocks.length; i++) {
       const collisionBlock = collisionBlocks[i]
 
-      // Check if a collision exists on all axes
+      //Mira si exista una colision en todos los angulos
       if (
         this.hitbox.x <= collisionBlock.x + collisionBlock.width &&
         this.hitbox.x + this.hitbox.width >= collisionBlock.x &&
         this.hitbox.y + this.hitbox.height >= collisionBlock.y &&
         this.hitbox.y <= collisionBlock.y + collisionBlock.height
       ) {
-        // Check collision while player is going left
+       // Mira la colision cuando el jugador mira a la izquierda
         if (this.velocity.x < -0) {
           this.hitbox.x = collisionBlock.x + collisionBlock.width + buffer
           this.x = this.hitbox.x - 7
         }
 
-        // Check collision while player is going right
+        // Mira la colision cuando el jugador mira a la derecha
         if (this.velocity.x > 0) {
           this.hitbox.x = collisionBlock.x - this.hitbox.width - buffer
           this.x = this.hitbox.x - 7
@@ -184,14 +184,14 @@ class Rocky {
     for (let i = 0; i < collisionBlocks.length; i++) {
       const collisionBlock = collisionBlocks[i]
 
-      // If a collision exists
+      // Mira si una colision existe
       if (
         this.hitbox.x <= collisionBlock.x + collisionBlock.width &&
         this.hitbox.x + this.hitbox.width >= collisionBlock.x &&
         this.hitbox.y + this.hitbox.height >= collisionBlock.y &&
         this.hitbox.y <= collisionBlock.y + collisionBlock.height
       ) {
-        // Check collision while player is going up
+        //Mira la colision si el jugador esta subiendo
         if (this.velocity.y < 0) {
           this.velocity.y = 0
           this.hitbox.y = collisionBlock.y + collisionBlock.height + buffer
@@ -199,7 +199,7 @@ class Rocky {
           break
         }
 
-        // Check collision while player is going down
+       //Mira la colision si el jugador esta bajando
         if (this.velocity.y > 0) {
           this.velocity.y = 0
           this.y = collisionBlock.y - this.height - buffer

@@ -1,13 +1,13 @@
-const X_VELOCITY = 200
-const JUMP_POWER = 210
+const X_VELOCITY = 225
+const JUMP_POWER = 280
 const GRAVITY = 580
 
 class Player {
   constructor({ x, y, size, velocity = { x: 0, y: 0 } }) {
     this.x = x
     this.y = y
-    this.width = 40 
-    this.height = 40
+    this.width = 38
+    this.height = 38
     this.velocity = velocity
     this.isOnGround = false
     this.isImageLoaded = false
@@ -53,8 +53,8 @@ class Player {
     this.hitbox = {
       x: 0,
       y: 0,
-      width: 15,
-      height: 32,
+      width: 10,
+      height: 28,
     }
     this.isInvincible = false
   }
@@ -67,7 +67,7 @@ class Player {
   }
 
   draw(c) {
-    // CUADRADO ROJO PARA PRUEBAS
+    //CUADRADO ROJO PARA PRUEBAS
     //c.fillStyle = 'rgba(255, 0, 0, 0.5)'
     //c.fillRect(this.x, this.y, this.width, this.height)
     //hitbox
@@ -117,18 +117,18 @@ class Player {
 
     //Posicion de la hitbox
     this.hitbox.x = this.x + 15
-    this.hitbox.y = this.y + 8
+    this.hitbox.y = this.y + 10
 
     this.applyGravity(deltaTime)
 
-    // Update horizontal position and check collisions
+    // Actualiza la posicion horizontal y revisa las colisiones
     this.updateHorizontalPosition(deltaTime)
     this.checkForHorizontalCollisions(collisionBlocks)
 
-    // Check for any platform collisions
+    // mira si detecta colisiones con las plataformas
     this.checkPlatformCollisions(platforms, deltaTime)
 
-    // Update vertical position and check collisions
+    // actualiza la posicion vertical y revisa las colisiones
     this.updateVerticalPosition(deltaTime)
     this.checkForVerticalCollisions(collisionBlocks)
     this.determineDirection()
@@ -217,21 +217,21 @@ class Player {
     for (let i = 0; i < collisionBlocks.length; i++) {
       const collisionBlock = collisionBlocks[i]
 
-      // Check if a collision exists on all axes
+      //Mira si exista una colision en todos los angulos
       if (
         this.hitbox.x <= collisionBlock.x + collisionBlock.width &&
         this.hitbox.x + this.hitbox.width >= collisionBlock.x &&
         this.hitbox.y + this.hitbox.height >= collisionBlock.y &&
         this.hitbox.y <= collisionBlock.y + collisionBlock.height
       ) {
-        // Check collision while player is going left
+        // Mira la colision cuando el jugador mira a la izquierda
         if (this.velocity.x < -0) {
           this.hitbox.x = collisionBlock.x + collisionBlock.width + buffer
           this.x = this.hitbox.x - 15
           break
         }
 
-        // Check collision while player is going right
+        // Mira la colision cuando el jugador mira a la derecha
         if (this.velocity.x > 0) {
           this.hitbox.x = collisionBlock.x - this.hitbox.width - buffer
           this.x = this.hitbox.x - 15
@@ -246,22 +246,22 @@ class Player {
     for (let i = 0; i < collisionBlocks.length; i++) {
       const collisionBlock = collisionBlocks[i]
 
-      // If a collision exists
+      // Mira si una colision existe
       if (
         this.hitbox.x <= collisionBlock.x + collisionBlock.width &&
         this.hitbox.x + this.hitbox.width >= collisionBlock.x &&
         this.hitbox.y + this.hitbox.height >= collisionBlock.y &&
         this.hitbox.y <= collisionBlock.y + collisionBlock.height
       ) {
-        // Check collision while player is going up
+        //Mira la colision si el jugador esta subiendo
         if (this.velocity.y < 0) {
           this.velocity.y = 0
           this.hitbox.y = collisionBlock.y + collisionBlock.height + buffer
-          this.y = this.hitbox.y - 8
+          this.y = this.hitbox.y - 10 
           break
         }
 
-        // Check collision while player is going down
+        //Mira la colision si el jugador esta bajando
         if (this.velocity.y > 0) {
           this.velocity.y = 0
           this.y = collisionBlock.y - this.height - buffer
