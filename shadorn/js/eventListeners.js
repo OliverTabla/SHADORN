@@ -18,10 +18,10 @@ window.addEventListener('keydown', (event) => {
     case 'r':
     case 'R':
       init();
-      reiniciar();
-      pausar();
-      iniciar();
       keys.r.pressed = true;
+      break;
+    case 'Escape':
+      window.location = 'menu.html';
       break;
     case 'o':
     case 'O':

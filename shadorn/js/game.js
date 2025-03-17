@@ -373,6 +373,8 @@ function teleport(){
   camera = { x: 4800, y: 0 };
 }
 function init() {
+  iniciar()
+  reiniciar()
   gems = []
   gemCount = 0
   gemUI = new Explosion ({
@@ -715,7 +717,7 @@ function animate(backgroundCanvas) {
 
   c.save();
   c.clearRect(0, 0, canvas.width, canvas.height);
-  c.scale(dpr + 8, dpr + 7)
+  c.scale(dpr + 10, dpr + 9)
   c.translate(-camera.x, camera.y);
   c.drawImage(oceanbackgroundCanvas, camera.x * 0.32, 0);
   c.drawImage(bramblebackgroundCanvas, camera.x * 0.25, 0);
@@ -767,7 +769,7 @@ function animate(backgroundCanvas) {
 
   //UI guardar y restaurar
   c.save();
-  c.scale(dpr + 6, dpr + 5);
+  c.scale(dpr + 7, dpr + 6);
   for (let i = corazones.length - 1; i >= 0;  i--) {
     const corazon = corazones [i]
     corazon.draw(c)

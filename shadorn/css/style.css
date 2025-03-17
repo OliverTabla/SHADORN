@@ -17,33 +17,6 @@ body,html{
   padding: 0;
 }
 
-ul.cabecera{
-  width: 300px;
-  position: absolute;
-  background-color: rgb(255, 0, 0);
-  border-radius: 15px;
-}
-li.cabecera{  
-  display: inline-block; 
-  font-weight: bold;
-  width: 180px;
-  background-color: rgb(217, 255, 0);
-  border-radius: 10px;
-}
-ul.cabecera,a{
-  color:rgb(0, 0, 0);
-  text-decoration: none;
-  font-size: 30px;
-  font-family:"Jersey 15";
-}
-a:hover {
-  color: #dd00ff;
-}
-ul.cabecera,li{
-  margin: 5%;
-  padding: 20px;
-}
-
 #run{
   float: left;
   height: 100%;
@@ -95,56 +68,6 @@ ul.cabecera,li{
 #w{
   width: 25%;
   height: 35%;
-}
-table {
-  height: 300px;
-  width: 1000px;
-}
-caption{
-  color:white;
-  font-size:xx-large;
-  font-family: "jersey 15";
-  font-size: 50px;
-}
-#name{
-  font-family: "Jersey 15";
-  height: 50px;
-  background-color:greenyellow;
-  font-size: 140%;
-}
-td, th {
-  font-style: normal;
-  height: 50px;
-  background-color: white;
-  border: solid 5px black;
-  border-radius: 5px;
-}
-#top{
-  font-size: large;
-  color: rgb(239, 184, 16);
-  background-color: black;
-}
-td.top{
-  width: 10%;
-  color: black;
-}
-#p{
-  display:inline;
-  vertical-align: 70%;
-}
-video{
-  height: 90%;
-  width: 80%;
-  border: solid 5px black;
-  border-radius: 10px;
-}
-a.name{
-  background-color: transparent;
-}
-td.tiempo{
-  color: black;
-  font-family: "jersey 15";
-  font-size: 25px;
 }
 #domi{
   font-size: medium;

@@ -24,7 +24,7 @@ setInterval(() => {
 }, 1000 / 60);
 
 function formatearMS(tiempo_ms) {
-    let MS = tiempo_ms % 1000
+    let MS = tiempo_ms % 100
     
     //Agregué la variable St para solucionar el problema de contar los minutos y horas.
     
@@ -37,6 +37,6 @@ function formatearMS(tiempo_ms) {
         return (this + "").padStart(n, 0)
     }
 
-    return H.ceros(2) + ":" + M.ceros(2) + ":" + S.ceros(2)
-        + "." + MS.ceros(3)
+    return M.ceros(1) + ":" + S.ceros(2)
+        + "." + MS.ceros(2)
 }

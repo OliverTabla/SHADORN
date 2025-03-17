@@ -1,5 +1,4 @@
 
-
 *{
     font-family:"jersey 15";
 }
@@ -11,7 +10,7 @@
     width: 1000px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0);
     margin: auto;
-    margin-top: 10px;
+    margin-top: -180px;
     border-radius: 25px;
     margin-bottom: 80px;
 }
