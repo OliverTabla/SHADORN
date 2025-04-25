@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHADORN</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+</head>
+<body>
+  <br>
+  <div class="crono">
+    <div class="time" id="time">0:00.00</div>
+  </div>
+ 
+  <ul id="pausa" class="hidden">
+    <li><a href="#" onclick="Reanudar()">Reanudar</a></li>
+    <li><a href="#" onclick="init(),Reanudar()">Reiniciar</a></li>
+    <li><a href="menu.html">Volver al menu</a></li>
+  </ul>
+  <div id="fondo os"></div>
+  <div id="resultado" class="hidden">
+    <p class="crono" id="result-time">0:00.00</p>
+    <ul>
+      <li><a href="#" onclick="init()">Volver a jugar</a></li>
+      <li><a href="enviar.html">Envia tu tiempo</a></li>
+      <li><a href="menu.html">Volver al menu</a></li>
+    </ul>
+  </div>
+
+
+  <div class="java">  
+    <canvas style="image-rendering: pixelated"></canvas>
+    <script src="./data/l_fondo.js"></script>
+    <script src="./data/l_Bramble.js"></script>
+    <script src="./data/l_fondo_cueva.js"></script>
+    <script src="./data/l_fondo_saku.js"></script>
+    <script src="./data/l_teleport.js"></script>
+    <script src="./data/l_caidasaku.js"></script>
+    <script src="./data/l_vacio.js"></script>
+    <script src="./data/l_lava.js"></script>
+    <script src="./data/l_arbols3.js"></script>
+    <script src="./data/l_arbols2.js"></script>
+    <script src="./data/l_arbols1.js"></script>
+    <script src="./data/l_arbols.js"></script>
+    <script src="./data/l_suelo.js"></script>
+    <script src="./data/l_pinchos.js"></script>
+    <script src="./data/l_tuberia.js"></script>
+    <script src="./data/l_entrada_cueva.js"></script>
+    <script src="./data/l_Gems.js"></script>
+    <script src="./data/l_colisiones.js"></script>
+    <script src="./data/l_META.js"></script>
+    <script src="./data/l_decoracion1.js"></script>
+    <script src="./data/collisions.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./classes/CollisionBlock.js"></script>
+    <script src="./classes/Platform.js"></script>
+    <script src="./classes/Player.js"></script>
+    <script src="./classes/Rocky.js"></script>
+    <script src="./classes/Jurk.js"></script>
+    <script src="./classes/Gork.js"></script>
+    <script src="./classes/Guard.js"></script>
+    <script src="./classes/explosion.js"></script>
+    <script src="./classes/heart.js"></script>
+    <script src="./js/crono.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/eventListeners.js"></script>
+    <script src="./js/Pausa.js"></script>
+    <script src="./js/resultado.js"></script>
+  </div>
+</body>
+</html>
