@@ -1,0 +1,72 @@
+#cabecera{
+    width: 100%;
+    position: absolute;
+    top: 35%;
+  }
+
+#historia{
+    left: 10%;
+    position: absolute;
+    display: flex;
+    width: 100px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 80px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+  #personaje{
+    right: 43.5%;
+    position: absolute;
+    display: flex;
+    width: 100px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 80px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+  #creditos{
+    right: 10%;
+    position: absolute;
+    display: flex;
+    width: 110px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 70px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+
+  #historia:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+
+  #personaje:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+
+  #creditos:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+  @media (max-width: 1366px){
+    #personaje{
+      position: absolute;
+      right: 40%;
+    }
+  }

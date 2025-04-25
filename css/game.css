@@ -1,0 +1,136 @@
+
+*{
+    font-family:"jersey 15";
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+div.crono {
+    position: absolute;
+    z-index: 1;
+    margin-left: 80%;
+    top: 35px;
+    width: 200px;
+    height: 35px;
+    font-size: 300%;
+    font-family: "Jersey 15";
+    letter-spacing: 0.3em;
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke: 2px black;
+    text-align: center;
+    justify-content: right;
+    align-items: top;
+}
+
+#resultado {
+    z-index: 10;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    overflow: hidden;
+    text-align: center;
+}
+
+#resultado p {
+    color: white;
+    font-size: 400px; 
+    -webkit-text-stroke: 2px black;
+    margin: 0; 
+}
+
+#resultado ul {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    gap: 100px; 
+    padding: 0;
+    margin-top: 20px;
+    list-style: none;
+}
+
+#resultado li {
+    font-size: 48px;
+}
+
+#resultado a {
+    text-decoration: none;
+    color: white;
+}
+
+#resultado a:hover {
+    color:  #dd00ff;
+    transition: color 0.3s ease-in-out;
+}
+
+
+#pausa{
+    position: absolute;
+    font-size: 600%;
+    z-index: 1;
+    list-style-type: none;
+    background-color: rgba(255, 255, 0, 0.9);
+    border: 2px solid black;
+    border-radius: 50px;
+    opacity: 100%;
+}
+
+#pausa::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); 
+    z-index: -3; 
+}
+
+#pausa li{
+    margin: 50px;
+}
+
+#pausa a{
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    opacity: 100%;
+}
+
+#pausa a:hover{
+    color: #f57070;
+    transition: color 0.3s ease-in-out;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+
+div.java {
+    position: absolute;
+    display: block;
+    width: 100%;
+    max-height: 100vh;
+    z-index: 0;
+}
+
+.no-interaction {
+    pointer-events: none; 
+    user-select: none; 
+}
+

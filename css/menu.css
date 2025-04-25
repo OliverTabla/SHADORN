@@ -1,0 +1,153 @@
+#cabecera{
+    width: 100%;
+    position: absolute;
+    top: 15%;
+  }
+  
+  #jugar{
+    left: 10%;
+    position: absolute;
+    display: flex;
+    width: 100px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 80px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+  #mejor{
+    right: 42.3%;
+    position: absolute;
+    display: flex;
+    width: 135px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 61.5px;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    border: 5px solid black;
+  }
+  #control{
+    right: 10%;
+    position: absolute;
+    display: flex;
+    width: 110px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 80px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+  #extra{
+    left: 10%;
+    position: absolute;
+    display: flex;
+    width: 100px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin: 1%;
+    padding: 80px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+  #enviar{
+    right: 42.3%;
+    position: absolute;
+    display: flex;
+    width: 100px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin: 1%;
+    padding: 81px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+  #titulo{
+    right: 10%;
+    position: absolute;
+    display: flex;
+    width: 145px;
+    background-color: rgb(217, 255, 0);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin: 1%;
+    padding: 63px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+  }
+  a{
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 40px;
+    font-family:"Jersey 15";
+    -webkit-text-stroke: 1.5px black;
+  }
+  a:hover {
+    color: #f57070;
+    transition: color 0.3s ease-in-out;
+  }
+  #jugar:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+  #mejor:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+  #control:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+  #extra:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+  #enviar:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+  #titulo:hover{
+    background-color: rgb(255, 58, 58);
+    border: 5px solid rgb(255, 0, 0);
+    transition: border 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+  }
+#menu{
+    width: 100%;
+    position: absolute;
+    top: 60%;
+}
+video{
+  z-index: -10;
+}
+@media (max-width: 1366px) {
+  #mejor{
+    position: absolute;
+    right: 40%;
+  }
+  #enviar{
+    position: absolute;
+    right: 40%;
+  }
+}

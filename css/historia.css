@@ -1,0 +1,15 @@
+#titulo{
+    position: absolute;
+    font-size: 150px;
+    top: -5%
+}
+#histo{
+    position: absolute;
+    color: white;
+    font-size: 25px;
+    top: 30%
+}
+#logo{
+    width:30%;
+    height: 80%;
+}
