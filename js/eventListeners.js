@@ -19,11 +19,10 @@ window.addEventListener('keydown', (event) => {
       keys.d.pressed = true;
       break;
     case 'o':
-    case 'O':
-      teleport();
-      keys.o.pressed = true;
-      break;
+      teleport()
   }
+  
+
 })
 
 document.addEventListener('mousedown', (event) => {
@@ -50,3 +49,5 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
   }
 })
+
+

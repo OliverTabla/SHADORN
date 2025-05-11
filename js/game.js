@@ -2,7 +2,6 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 const dpr = window.devicePixelRatio || 1;
-
 const gameWidth = 13000; // Ancho del mapa original
 const gameHeight = 1080; // Altura del mapa original
 
@@ -75,16 +74,16 @@ const tilesets = {
  l_Bramble: { imageUrl: './images/decorations.png', tileSize: 16 },
  l_fondo_cueva: { imageUrl: './images/tileset.png', tileSize: 16 },
  l_fondo_saku: { imageUrl: './images/skura.png', tileSize: 16 },
- l_teleport: { imageUrl: './images/public', tileSize: 16 },
+ l_teleport: { imageUrl: './images/vacio.png', tileSize: 16 },
  l_caidasuku: { imageUrl: './images/tileset.png', tileSize: 16 },
- l_vacio: { imageUrl: './images/public', tileSize: 16 },
- l_lava: { imageUrl: './images/public', tileSize: 16 },
+ l_vacio: { imageUrl: './images/vacio.png', tileSize: 16 },
+ l_lava: { imageUrl: './images/tileset.png', tileSize: 16 },
  l_arbols3: { imageUrl: './images/skuraos.png', tileSize: 16 },
  l_arbols2: { imageUrl: './images/skuraos.png', tileSize: 16 },
  l_arbols1: { imageUrl: './images/skura.png', tileSize: 16 },
  l_arbols: { imageUrl: './images/skura.png', tileSize: 16 },
- l_suelo: { imageUrl: './images/public', tileSize: 16 },
- l_pinchos: { imageUrl: './images/public', tileSize: 16 },
+ l_suelo: { imageUrl: './images/tileset.png', tileSize: 16 },
+ l_pinchos: { imageUrl: './images/tileset.png', tileSize: 16 },
  l_tuberia: { imageUrl: './images/tuberia.png', tileSize: 16 },
  l_entrada_cueva: { imageUrl: './images/tileset.png', tileSize: 16 },
  l_Gems: { imageUrl: './images/decorations.png', tileSize: 16 },
@@ -176,12 +175,10 @@ cancionP.volume = 0.15;
 
   //sonido de daño
   const dañoSonido = new Audio ('./sonidos/daño.mp3')
-  dañoSonido.volume = 0.1
   cancionP.play();
 
-const enemydie = new Audio ('./sonidos/dañoEne.mp3')
-enemydie.volume = 0.1
-//posicion de la lava
+  const enemydie = new Audio ('./sonidos/dañoEne.mp3')
+  //posicion de la lava
 let lava1 = []
 let lavas1 = []
 l_lava.forEach((row, y) => {
@@ -453,12 +450,6 @@ let rockys =  [
   }),
   new Rocky({
     x: 8032,
-    y: 496,
-    width: 40,
-    height: 40,
-  }),
-  new Rocky({
-    x: 8096,
     y: 576,
     width: 40,
     height: 40,
@@ -680,9 +671,10 @@ const keys = {
 
 let lastTime = performance.now();
 let camera = { x: 0, y: 0 };
+
 const SCROLL_POST_RIGHT = 220;
-const SCROLL_POST_TOP = 100;
-const SCROLL_POST_BOTTOM = 200;
+const SCROLL_POST_TOP = 100; 
+const SCROLL_POST_BOTTOM = 150; 
 
 let oceanbackgroundCanvas = null;
 let bramblebackgroundCanvas = null;
@@ -708,8 +700,8 @@ let gemUI = new Explosion ({
 let gemCount = 0
 function teleport(){
   player = new Player({
-    x: 11456,
-    y: 160,
+    x: 8096,
+    y: 556,
     size: 16,
     velocity: { x: 0, y: 0 },
   });
@@ -887,12 +879,6 @@ l_META.forEach((row, y) => {
     }),
     new Rocky({
       x: 8032,
-      y: 496,
-      width: 40,
-      height: 40,
-    }),
-    new Rocky({
-      x: 8096,
       y: 576,
       width: 40,
       height: 40,
@@ -1106,6 +1092,7 @@ l_META.forEach((row, y) => {
   camera = { x: 0, y: 0 };
 }
 function animate(backgroundCanvas) {
+
   const currentTime = performance.now();
   const deltaTime = (currentTime - lastTime) / 1000;
   lastTime = currentTime;
@@ -1123,8 +1110,9 @@ function animate(backgroundCanvas) {
     const collisionDirection = checkCollision (player, rocky)
     if (collisionDirection) {
       if (collisionDirection === 'bottom' && !player.isOnGround) {
-      player.velocity.y = -150
+      enemydie.volume = 0.1
       enemydie.play()
+      player.velocity.y = -150
       explosiones.push(
         new Explosion({
           x: rocky.x, 
@@ -1151,8 +1139,9 @@ function animate(backgroundCanvas) {
       })
 
       if (!player.isInvincible && fullCorazones.length > 0) {
-        dañoSonido.play()
         fullCorazones[fullCorazones.length - 1].depleted = true
+          dañoSonido.volume = 0.1
+          dañoSonido.play()
       } else if (fullCorazones.length === 0) {
         init()
       }
@@ -1171,8 +1160,9 @@ function animate(backgroundCanvas) {
     const collisionDirection = checkCollision (player, jurk)
     if (collisionDirection) {
       if (collisionDirection === 'bottom' && !player.isOnGround) {
-      player.velocity.y = -150
+      enemydie.volume = 0.1
       enemydie.play()
+      player.velocity.y = -150
       explosiones.push(
         new Explosion({
           x: jurk.x, 
@@ -1199,8 +1189,9 @@ function animate(backgroundCanvas) {
       })
 
       if (!player.isInvincible && fullCorazones.length > 0) {
-        dañoSonido.play()
         fullCorazones[fullCorazones.length - 1].depleted = true
+          dañoSonido.volume = 0.1
+          dañoSonido.play()
       } else if (fullCorazones.length === 0) {
         init()
       }
@@ -1219,8 +1210,9 @@ function animate(backgroundCanvas) {
     const collisionDirection = checkCollision (player, gork)
     if (collisionDirection) {
       if (collisionDirection === 'bottom' && !player.isOnGround) {
-      player.velocity.y = -150
+      enemydie.volume = 0.1
       enemydie.play()
+      player.velocity.y = -150
       explosiones.push(
         new Explosion({
           x: gork.x, 
@@ -1247,8 +1239,9 @@ function animate(backgroundCanvas) {
       })
 
       if (!player.isInvincible && fullCorazones.length > 0) {
-        dañoSonido.play()
         fullCorazones[fullCorazones.length - 1].depleted = true
+          dañoSonido.volume = 0.1
+          dañoSonido.play()
       } else if (fullCorazones.length === 0) {
         init()
       }
@@ -1276,8 +1269,9 @@ function animate(backgroundCanvas) {
       })
 
       if (!player.isInvincible && fullCorazones.length > 0) {
-        dañoSonido.play()
         fullCorazones[fullCorazones.length - 1].depleted = true
+          dañoSonido.volume = 0.1
+          dañoSonido.play()
       } else if (fullCorazones.length === 0) {
         init()
       }
@@ -1341,10 +1335,12 @@ function animate(backgroundCanvas) {
         collisionDirection === 'right' || 
         collisionDirection === 'top' || 
         collisionDirection === 'bottom') {
+          dañoSonido.volume = 0.1
           dañoSonido.play()
           init()
         }
       else {
+        dañoSonido.volume = 0.1
         dañoSonido.play()
         init()
       }
@@ -1364,6 +1360,7 @@ function animate(backgroundCanvas) {
         collisionDirection === 'right' || 
         collisionDirection === 'top' || 
         collisionDirection === 'bottom') {
+          dañoSonido.volume = 0.1
           dañoSonido.play()
           init()
         }
@@ -1386,10 +1383,12 @@ function animate(backgroundCanvas) {
         collisionDirection === 'right' || 
         collisionDirection === 'top' || 
         collisionDirection === 'bottom') {
+          dañoSonido.volume = 0.1
           dañoSonido.play()
           init()
         }
       else {
+        dañoSonido.volume = 0.1
         dañoSonido.play()
         init()
       }
@@ -1473,6 +1472,7 @@ function animate(backgroundCanvas) {
   }
   
 
+
   if (player.x > SCROLL_POST_RIGHT && player.x < 12288) {
     camera.x = player.x - SCROLL_POST_RIGHT;
   }
@@ -1481,9 +1481,11 @@ function animate(backgroundCanvas) {
     camera.y = SCROLL_POST_TOP - player.y;
   }
 
-  if (player.y > SCROLL_POST_BOTTOM && camera.y < 20) {
+  if (player.y > SCROLL_POST_BOTTOM && camera.y < 224) {
     camera.y = -(player.y - SCROLL_POST_BOTTOM);
   }
+
+  
 
   c.save();
   c.clearRect(0, 0, canvas.width, canvas.height);
