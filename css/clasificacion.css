@@ -1,64 +1,160 @@
-*{
-    font-family:"jersey 15";
-    -webkit-text-stroke: 1px black;
+* {
+  font-family: "jersey 15";
+  -webkit-text-stroke: 1px black;
+  box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #121212;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+
 table {
-    height: 300px;
-    width: 1000px;
-    position: absolute;
-    display: flexbox;
-  }
-  caption{
-    color:white;
-    font-size:xx-large;
-    font-family: "jersey 15";
-    font-size: 75px;
-  }
-  #domi{
-    color:white;
-    font-size:xx-large;
-    font-family: "jersey 15";
-    font-size: 30px;
-  }
-  #name{
-    font-family: "Jersey 15";
-    height: 50px;
-    background-color:rgb(217, 255, 0);
-    color:white;
-    font-size: 30px;
-  }
-  td, th {
-    font-style: normal;
-    height: 50px;
-    background-color: white;
-    border: solid 5px black;
-    border-radius: 5px;
-  }
-  #top{
-    font-size: 30px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0);
-  }
-  td.top{
-    width: 10%;
-    color: black;
-    font-size: 30px;
-  }
-  #p{
-    display:inline;
-    vertical-align: 70%;
-  }
- p{
-  position: absolute;
+  position: relative;
+  margin: 20px auto;
+  border: 5px solid black;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption {
+  color: white;
+  font-size: 75px;
+  font-family: "jersey 15";
+  margin-bottom: 5px;
+}
+
+#domi {
+  color: white;
+  font-size: 30px;
+  font-family: "jersey 15";
+  margin-bottom: 15px;
+}
+
+#name {
+  font-family: "Jersey 15";
+  height: 50px;
+  color: white;
+  font-size: 30px;
+}
+thead tr {
+  background-color: black;
+  color: white;
+  font-size: 24px;
+}
+
+tbody td {
+  font-style: normal;
+  height: 50px;
+  background-color: white;
+  border: 5px solid black;
+  text-align: center;
+}
+
+#top {
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+
+td.top,
+.tops {
+  width: 10%;
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+}
+
+#p {
+  display: inline;
+  vertical-align: 70%;
+}
+
+p {
+  position: relative;
   bottom: 1%;
-  font-size: 25px;
- }
-  a.name{
-    background-color: transparent;
-    font-size: 40px;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
+a.name {
+  background-color: transparent;
+  font-size: 40px;
+  text-decoration: none;
+  color: white;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+a.name:hover {
+  color: rgb(255, 126, 126);
+  transition: color 0.3s ease;
+}
+
+td.tiempo {
+  color: rgb(255, 255, 255);
+  font-family: "jersey 15";
+  font-size: 30px;
+  background-color: #ffffff;
+}
+
+#nodispo {
+  display: none;
+  color: white;
+  text-align: center;
+  font-size: 22px;
+  padding: 50px;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (min-width: 1367px) {
+  table {
+    width: 65%;
+    height: auto;
+    transform: scale(0.9);
   }
-  td.tiempo{
-    color: rgb(255, 255, 255);
-    font-family: "jersey 15";
-    font-size: 30px;
+  p{
+    font-size: 40px !important;
+    bottom: 1% !important;
   }
+}
+
+@media (max-width: 1366px) and (min-width: 1025px) {
+  table {
+    transform: scale(0.75);
+  }
+
+  #volver {
+    font-size: 25px;
+  }
+
+  p{
+    font-size: 30px !important;
+    bottom: 120px !important;
+  }
+}
+
+
+

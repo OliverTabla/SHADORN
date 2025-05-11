@@ -1,15 +1,139 @@
+* {
+    font-family: "jersey 15";
+    -webkit-text-stroke: 0.7px black;
+}
+
 #titulo{
     position: absolute;
-    font-size: 150px;
-    top: -5%
+    top: 10%
 }
 #histo{
     position: absolute;
     color: white;
-    font-size: 25px;
+    top: 30%
+}
+#titulo2{
+    position: absolute;
+    top: 10%
+}
+#histo2{
+    position: absolute;
+    color: white;
     top: 30%
 }
 #logo{
-    width:30%;
-    height: 80%;
+    position: absolute;
+    bottom: 5%;
 }
+
+@media (min-width: 1367px) {
+    #titulo{
+        font-size: 150px !important;
+    }
+    #histo{
+        font-size: 22px !important;
+    }
+    #titulo2{
+        font-size: 120px !important;
+    }
+    #histo2{
+        font-size: 25px !important;
+    }
+    #logo{
+        width:500px;
+        height: 450px;
+    }
+  }
+  
+  @media (max-width: 1366px) and (min-width: 1025px) {
+    #titulo{
+        font-size: 100px !important;
+    }
+    #histo{
+        font-size: 15px !important;
+    }
+    #titulo2{
+        font-size: 110px !important;
+    }
+    #histo2{
+        font-size: 23px !important;
+    }
+    #logo{
+        width:380px;
+        height: 320px;
+    }
+    * {
+    font-family: "jersey 15";
+    -webkit-text-stroke: 0.5px black;
+    }
+  }
+  
+  @media (max-width: 1024px) and (min-width: 769px) {
+    #titulo{
+        font-size: 80px !important;
+    }
+    #histo{
+        font-size: 13px !important;
+    }
+    #titulo2{
+        font-size: 60px !important;
+    }
+    #histo2{
+        font-size: 15px !important;
+    }
+    #logo{
+        width:250px;
+        height: 210px;
+    }
+    * {
+    font-family: "jersey 15";
+    -webkit-text-stroke: 0.5px black;
+    }
+  }
+  
+  @media (max-width: 768px) and (min-width: 481px) {
+    #titulo{
+        font-size: 50px !important;
+    }
+    #histo{
+        font-size: 10px !important;
+    }
+    #titulo2{
+        font-size: 50px !important;
+    }
+    #histo2{
+        font-size: 12px !important;
+    }
+    #logo{
+        width:250px;
+        height: 200px;
+    }
+    * {
+    font-family: "jersey 15";
+    -webkit-text-stroke: 0.3px black;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #titulo{
+        font-size: 20px !important;
+    }
+    #histo{
+        font-size: 10px !important;
+    }
+    #titulo2{
+        font-size: 50px !important;
+    }
+    #histo2{
+        font-size: 8px !important;
+    }
+    #logo{
+        width:170px;
+        height: 140px;
+    }
+    * {
+    font-family: "jersey 15";
+    -webkit-text-stroke: 0.1px black;
+    }
+
+  }

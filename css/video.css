@@ -1,9 +1,4 @@
-*{
-    font-family:"jersey 15";
-    -webkit-text-stroke: 0px black;
-}
-
-video.tops{
+video.tops {
     position: absolute;
     border: 5px solid black;
     width: 1035px;

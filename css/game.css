@@ -14,75 +14,25 @@ html, body{
 div.crono {
     position: absolute;
     z-index: 1;
-    margin-left: 80%;
-    top: 35px;
-    width: 200px;
-    height: 35px;
-    font-size: 300%;
     font-family: "Jersey 15";
-    letter-spacing: 0.3em;
+    letter-spacing: 0.33em;
     color: rgb(255, 255, 255);
+    top: -90%;
     -webkit-text-stroke: 2px black;
     text-align: center;
-    justify-content: right;
+    justify-content: center;
     align-items: top;
 }
 
-#resultado {
-    z-index: 10;
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    overflow: hidden;
-    text-align: center;
-}
-
-#resultado p {
-    color: white;
-    font-size: 400px; 
-    -webkit-text-stroke: 2px black;
-    margin: 0; 
-}
-
-#resultado ul {
-    width: 100%;
-    display: flex;
-    justify-content: center; 
-    gap: 100px; 
-    padding: 0;
-    margin-top: 20px;
-    list-style: none;
-}
-
-#resultado li {
-    font-size: 48px;
-}
-
-#resultado a {
-    text-decoration: none;
-    color: white;
-}
-
-#resultado a:hover {
-    color:  #dd00ff;
-    transition: color 0.3s ease-in-out;
-}
 
 
 #pausa{
     position: absolute;
-    font-size: 600%;
     z-index: 1;
     list-style-type: none;
     background-color: rgba(255, 255, 0, 0.9);
     border: 2px solid black;
     border-radius: 50px;
-    opacity: 100%;
 }
 
 #pausa::before {
@@ -98,17 +48,20 @@ div.crono {
 
 #pausa li{
     margin: 50px;
+    align-items: center;
+    justify-content: center;
 }
 
 #pausa a{
     color: white;
     text-decoration: none;
-    margin-right: 10px;
-    opacity: 100%;
+    font-size: 600%;
+    align-items: center;
+    justify-content: center;
 }
 
-#pausa a:hover{
-    color: #f57070;
+#pausa li a:hover{
+    color:  rgb(255, 79, 79);
     transition: color 0.3s ease-in-out;
 }
 
@@ -133,4 +86,149 @@ div.java {
     pointer-events: none; 
     user-select: none; 
 }
+
+/* Ajustes para diferentes tamaños de pantalla */
+@media (min-width: 1367px) {
+  div.crono{
+    width: 100px;
+    height: 50px;
+    font-size: 300%;
+    top: -90% !important;
+    margin-left: 75%;
+  }
+  #pausa{
+    align-items: center !important;
+    justify-content: center !important;
+    top: -50%;
+  }
+}
+
+@media (max-width: 1366px) and (min-width: 1025px) {
+  div.crono{
+    width: 10px;
+    height: 50px;
+    font-size: 220%;
+    top: -92% !important;
+    margin-left: 66%;
+  }
+  #pausa{
+    align-items: center !important;
+    justify-content: center !important;
+    top: -50%;
+    width: 30%;
+    height: auto;
+  }
+  #pausa a{
+    font-size: 200%;
+  }
+  p.crono{
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  div.crono{
+    width: 100px;
+    height: 50px;
+    font-size: 180%;
+    top: -80% !important;
+    margin-left: 78%;
+  }
+  #pausa{
+    align-items: center !important;
+    justify-content: center !important;
+    top: -50%;
+    width: 30%;
+    height: auto;
+  }
+  #pausa li{
+    margin: 35px;
+  }
+  #pausa a{
+    font-size: 200%;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  div.crono{
+    width: 10px;
+    height: 50px;
+    font-size: 120%;
+    top: -78% !important;
+    margin-left: 70%;
+  }
+  #pausa{
+    align-items: center !important;
+    justify-content: center !important;
+    top: -45%;
+    width: 30%;
+    height: auto;
+  }
+  #pausa li{
+    margin: 17px;
+  }
+  #pausa a{
+    font-size: 150%;
+  }
+}
+
+@media (max-width: 480px) {
+  div.crono{
+    width: 10px;
+    height: 50px;
+    font-size: 90%;
+    top: -88% !important;
+    margin-left: 68%;
+  }
+  #pausa{
+    align-items: center !important;
+    justify-content: center !important;
+    top: -60%;
+    width: 30%;
+    height: auto;
+  }
+  #pausa li{
+    margin: 15px;
+  }
+  #pausa a{
+    font-size: 110%;
+  }
+}
+
+/* Estilos adicionales para los controles móviles */
+#mobile-controls {
+  display: none; /* Oculto por defecto */
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  #mobile-controls {
+    display: flex !important;
+  }
+}
+
+
+@media (max-width: 480px) {
+  #mobile-controls img {
+    transform: scale(1);
+  }
+}
+
+#mobile-controls img:active {
+  transform: scale(0.9);
+  opacity: 0.8;
+  transition: transform 0.1s, opacity 0.1s;
+}
+
+
+#mobile-controls img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+
+
+
 
