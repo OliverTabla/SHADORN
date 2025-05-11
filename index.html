@@ -1,22 +1,36 @@
 <!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
   <title>SHADORN</title>
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/volver.css">
   <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
 </head>
 <body>
-  <p id="title">SHADORN</p>
-  <div id="message" class="texto">Pulsa cualquier tecla para empezar</div>
-  <div class="fondo"></div>
-  <video class="inicio" autoplay loop muted playsinline>
-    <source src="./records/titulo.mp4" type="video/mp4">
-  </video>
+  <!-- Mensaje de rotación -->
+  <div id="rotate-warning">
+    <div class="rotate-icon">↻</div>
+    <p>Gira tu dispositivo para ver el contenido</p>
+  </div>
+  
+  <!-- Contenido principal -->
+  <div id="main-content">
+    <p id="title">SHAD&Oacute;RN</p>
+    <div id="message" class="visible">Pulsa cualquier tecla para empezar</div>
+    <div class="fondo"></div>
+    <video class="inicio" autoplay loop muted playsinline>
+      <source src="./records/titulo.mp4" type="video/mp4">
+    </video>
+  
+   
+  </div> 
   <script src="./js/index.js"></script>
+  <script src="./js/orientacion.js"></script>
 </body>
 </html>

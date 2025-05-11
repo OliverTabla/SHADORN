@@ -1,40 +1,50 @@
 <!DOCTYPE html>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHADORN</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/volver.css">
-  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+     <title>SHADORN</title>
+     <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="css/volver.css">
+     <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
 </head>
+
 <body>
-     <ul class="volver">
-          <li class="volver"><a href="contenido.html">Volver</a></li>
-      </ul>
-    <div>
+      <!-- Mensaje de rotación -->
+  <div id="rotate-warning">
+     <div class="rotate-icon">↻</div>
+     <p>Gira tu dispositivo para ver el contenido</p>
+   </div>
+   
+   <!-- Contenido principal -->
+   <div id="main-content">
+     <a href="contenido.html" id="volver">Volver</a>
+     <div>
           <div id="sha">
                <img src="./CONCEPTOS/SHADORN/shadorn.png" id="shadorn">
                <p>Shadorn</p>
           </div>
-           <div id="ro">
+          <div id="ro">
                <img src="./CONCEPTOS/ROCKY/ROCKY.png" id="rocky">
                <br>
                <p>Rocky</p>
           </div>
-           <div id="ju">
+          <div id="ju">
                <img src="./CONCEPTOS/JURK/JURK.png" id="jurk">
                <p>Jurk</p>
           </div>
           <div id="go">
-            <img src="./CONCEPTOS/GORK/GORK.png" id="gork">
-            <p>Gork</p>
+               <img src="./CONCEPTOS/GORK/GORK.png" id="gork">
+               <p>Gork</p>
           </div>
           <div id="gu">
-            <img src="./CONCEPTOS/GUARDIAN DEL SUBTERRANEO/GUARDIAN DEL SUBTERRANEO.png" id="guard">
-            <p>Guardian del subterraneo</p>
+               <img src="./CONCEPTOS/GUARDIAN DEL SUBTERRANEO/GUARDIAN DEL SUBTERRANEO.png" id="guard">
+               <p>Guardian del subterraneo</p>
           </div>
      </div>
+   </div>
+     <script src="./js/orientacion.js"></script>
 </body>

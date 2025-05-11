@@ -1,22 +1,29 @@
 <!DOCTYPE html>
+
 <head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHADORN</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/historia.css">
-  <link rel="stylesheet" href="css/volver.css">
-  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHADORN</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/historia.css">
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
-    <ul class="volver">
-        <li class="volver"><a href="contenido.html">Volver</a></li>
-    </ul>
-    <p id="titulo">SHADORN</p>
+    <!-- Mensaje de rotación -->
+  <div id="rotate-warning">
+    <div class="rotate-icon">↻</div>
+    <p>Gira tu dispositivo para ver el contenido</p>
+  </div>
+  
+  <!-- Contenido principal -->
+  <div id="main-content">
+    <a href="contenido.html" id="volver">Volver</a>
+    <p id="titulo">SHAD&Oacute;RN</p>
     <pre id="histo">
 En un rincón oculto del mundo, donde los cielos eran de un azul vibrante y los bosques se extendían hasta 
 tocar el mar, vivía un pequeño pero valiente ser llamado Shadorn. Con su capa roja ondeando al viento y sus 
@@ -41,5 +48,8 @@ descansaba la Esmeralda Eterna, resplandeciente como un pedazo del cielo mismo.
 Con el corazón latiendo fuerte, Shadorn avanzó. Su aventura estaba a punto de cambiar no solo su vida, 
 sino la de todos en su hogar.
     </pre>
+</div>
+<script src="./js/orientacion.js"></script>
 </body>
+
 </html>

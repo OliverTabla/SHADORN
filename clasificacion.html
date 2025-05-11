@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8">
     <meta charset="utf-8">
@@ -6,75 +7,87 @@
     <title>SHADORN</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/clasificacion.css">
-    <link rel="stylesheet" href="css/volver.css">
     <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <ul class="volver">
-        <li class="volver"><a href="menu.html">Volver</a></li>
-    </ul>
-    <table>
-        <caption>Clasificacion Global</caption>
+   <!-- Mensaje de rotación -->
+   <div id="rotate-warning">
+    <div class="rotate-icon">↻</div>
+    <p>Gira tu dispositivo para ver el contenido</p>
+    </div>
+    
+    <!-- Contenido principal -->
+    <div id="main-content">
+        <a href="menu.html" id="volver">Volver</a>
+        <table>
+            <caption>Clasificacion Global</caption>
             <caption id="domi">Se actualiza cada domingo</caption>
-        <tr>
-            <td class="top" id="top">Puesto</td>
-            <td id="name">Nombre</td>
-            <td id="name">Tiempo</td>
-        </tr>
-        <tr>
-            <td class="top">1.</td>
-            <td><a href="top1.html" class="name">Oliver Tabla Prieto</a></td>
-            <td class="tiempo">01:49:45</td> 
-        </tr>
-        <tr>
-            <td class="top">2.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr>
-            <td class="top">3.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr>
-            <td class="top">4.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr>
-            <td class="top">5.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr>
-            <td class="top">6.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr>
-            <td class="top">7.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr>
-            <td class="top">8.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr> 
-            <td class="top">9.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-        <tr>
-            <td class="top">10.</td>
-            <td ambsp;></td>
-            <td class="tiempo" ambsp;></td>
-        </tr>
-    </table>
-    <p>Para poder ver el video de alguien de la tabla haz click en su nombre.</p>
+            <thead>
+                <tr>
+                    <td class="tops" id="top">Puesto</td>
+                    <td class="name" id="top">Nombre</td>
+                    <td class="tiempo" id="top">Tiempo</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tops">1.</td>
+                    <td class="name"><a href="top1.html" class="name">Oliver Tabla Prieto</a></td>
+                    <td class="tiempo">01:49:45</td>
+                </tr>
+                <tr>
+                    <td class="tops">2.</td>
+                    <td class="name"><a href="top2.html" class="name">Pau Tabla Cano</a></td>
+                    <td class="tiempo">02:27:78</td>
+                </tr>
+                <tr>
+                    <td class="tops">3.</td>
+                    <td class="name"><a href="top3.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+                <tr>
+                    <td class="tops">4.</td>
+                    <td class="name"><a href="top4.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+                <tr>
+                    <td class="tops">5.</td>
+                    <td class="name"><a href="top5.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+                <tr>
+                    <td class="tops">6.</td>
+                    <td class="name"><a href="top6.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+                <tr>
+                    <td class="tops">7.</td>
+                    <td class="name"><a href="top7.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+                <tr>
+                    <td class="tops">8.</td>
+                    <td class="name"><a href="top8.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+                <tr>
+                    <td class="tops">9.</td>
+                    <td class="name"><a href="top9.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+                <tr>
+                    <td class="tops">10.</td>
+                    <td class="name"><a href="top10.html" class="name"></a></td>
+                    <td class="tiempo"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Para poder ver el video de alguien de la tabla haz click en su nombre.</p>
+    </div>
+  <script src="./js/orientacion.js"></script>
 </body>
 </html>

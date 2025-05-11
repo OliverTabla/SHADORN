@@ -5,6 +5,7 @@
   <title>SHADORN</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="mobile-controls.css">
   <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,28 +13,37 @@
 </head>
 <body>
   <br>
-  <div class="crono">
-    <div class="time" id="time">0:00.00</div>
+  <!-- Mensaje de rotación -->
+  <div id="rotate-warning">
+    <div class="rotate-icon">↻</div>
+    <p>Gira tu dispositivo para ver el contenido</p>
   </div>
- 
-  <ul id="pausa" class="hidden">
-    <li><a href="#" onclick="Reanudar()">Reanudar</a></li>
-    <li><a href="#" onclick="init(),Reanudar()">Reiniciar</a></li>
-    <li><a href="menu.html">Volver al menu</a></li>
-  </ul>
-  <div id="fondo os"></div>
-  <div id="resultado" class="hidden">
-    <p class="crono" id="result-time">0:00.00</p>
-    <ul>
-      <li><a href="#" onclick="init()">Volver a jugar</a></li>
-      <li><a href="enviar.html">Envia tu tiempo</a></li>
+
+  <!-- Contenido principal -->
+  <div id="main-content">\
+    <div class="crono">
+      <div class="time" id="time">0:00.00</div>
+    </div>
+    <button id="fullscreen-btn" class="fullscreen-button">⛶</button>
+    <ul id="pausa" class="hidden">
+      <li><a href="#" onclick="Reanudar()">Reanudar</a></li>
+      <li><a href="#" onclick="init(),Reanudar()">Reiniciar</a></li>
       <li><a href="menu.html">Volver al menu</a></li>
     </ul>
+    <div id="fondo os"></div>
+    <div class="hidden">
+      <p class="crono" id="result-time">0:00.00</p>
+      <ul id="resultado" class="hidden">
+        <li><a href="#" onclick="init()">Volver a jugar</a></li>
+        <li class="ocultar"><a href="enviar.html">Envia tu tiempo</a></li>
+        <li><a href="menu.html">Volver al menu</a></li>
+      </ul>
+    </div>
   </div>
-
-
+  <script src="./js/orientacion.js"></script>
   <div class="java">  
     <canvas style="image-rendering: pixelated"></canvas>
+    <script src="./js/fpslimit.js"></script>
     <script src="./data/l_fondo.js"></script>
     <script src="./data/l_Bramble.js"></script>
     <script src="./data/l_fondo_cueva.js"></script>
@@ -70,6 +80,8 @@
     <script src="./js/eventListeners.js"></script>
     <script src="./js/Pausa.js"></script>
     <script src="./js/resultado.js"></script>
+    <script src="./js/tactil.js"></script>
+    <script src="./js/fullscreen.js"></script>
   </div>
 </body>
 </html>

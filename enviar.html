@@ -1,46 +1,65 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SHADORN</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/formulario.css">
-  <link rel="stylesheet" href="css/volver.css">
   <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
 </head>
-<body>
-  <br>
-  <ul class="volver">
-    <li class="volver"><a href="menu.html">Volver</a></li>
-</ul>
-  <div class="container">
-    <form class="form" action="enviarvideo.php" method="POST" enctype="multipart/form-data">
-      <h2>¡Envia tu record aqui!</h2>
-      <p>
-        Envia tu mejor tiempo para poder tener la posibilidad de entrar entre los 10 mejores tiempos.
-      </p>
-      
-      <label for="nombre">Nombre:</label>
-      <input type="text" name="nombre" id="nombre" class="box" required>
-      
-      <label for="correo">Correo electronico:</label>
-      <input type="email" name="correo" id="correo" class="box" required>
-      
-      <label for="mensaje">¡Escribe tu record aqui!</label>
-      <input type="text" name="mensaje" id="mensaje" class="box" required>
 
-      <label for="opinion">¿Que opinas de nuestra web y que mejorarias?</label>
-      <input type="text" name="opinion" id="opinion" class="box">
-      
-      <label for="video">Inserta tu video aqui:</label>
-      <input class="archivo" type="file" name="video" id="video" accept="video/*" required>
-      
-      <input type="submit" value="Enviar" class="submit">
-    </form>
-    
+<body>
+    <!-- Mensaje de rotación -->
+    <div id="rotate-warning">
+      <div class="rotate-icon">↻</div>
+      <p>Gira tu dispositivo para ver el contenido</p>
+    </div>
+    <!-- Contenido principal -->
+  <div id="main-content">
+    <a href="menu.html" id="volver">Volver</a>
+    <div class="containerForm">
+      <form class="form" enctype="multipart/form-data" id="formVideo">
+        <h2>¡Envia tu record aqui!</h2>
+        <p>
+          Envia tu mejor tiempo para poder tener la posibilidad de entrar entre los 10 mejores tiempos.
+        </p>
+
+        <div class="divInput">
+          <label for="nombre">Nombre:</label>
+          <input type="text" name="nombre" id="nombre" class="box" required>
+        </div>
+
+        <div class="divInput">
+          <label for="correo">Correo electronico:</label>
+          <input type="email" name="correo" id="correo" class="box" required>
+        </div>
+
+        <div class="divInput">
+          <label for="mensaje">¡Escribe tu record aqui!</label>
+          <input type="text" name="mensaje" id="mensaje" class="box" required>
+        </div>
+
+        <div class="divInput">
+          <label for="opinion">¿Que opinas de nuestra web y que mejorarias?</label>
+          <input type="text" name="opinion" id="opinion" class="box">
+        </div>
+
+        <div class="divInput">
+          <label for="video">Inserta tu video aqui:</label>
+          <input class="archivo" type="file" name="video" id="video" accept="video/*" required>
+        </div>
+
+        <input type="submit" value="Enviar" class="submit">
+      </form>
+
+    </div>
   </div>
+  <script src="./js/orientacion.js"></script>
+  <script src="js/envio.js"></script>
 </body>
+
 </html>
