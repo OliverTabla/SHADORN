@@ -251,13 +251,13 @@ function createMobileControls() {
       pauseButtonImg.style.width = pauseButtonImg.style.width = "80px"
       pauseButtonImg.style.height = pauseButtonImg.style.height = "40px"
     } else {
-      leftButton.style.width = leftButton.style.width = "120px"
-      leftButton.style.height = leftButton.style.height = "100px"
-      rightButton.style.height = rightButton.style.height = "100px"
-      rightButton.style.widht = rightButton.style.width = "50px"
-      jumpButtonImg.style.width = jumpButtonImg.style.widht = "220px"
-      jumpButtonImg.style.height = jumpButtonImg.style.height = "150px"
-      pauseButtonImg.style.width = pauseButtonImg.style.width = "80px"
+      leftButton.style.width = leftButton.style.width = "250px"
+      leftButton.style.height = leftButton.style.height = "200px"
+      rightButton.style.height = rightButton.style.height = "200px"
+      rightButton.style.widht = rightButton.style.width = "250px"
+      jumpButtonImg.style.width = jumpButtonImg.style.width = "400px"
+      jumpButtonImg.style.height = jumpButtonImg.style.height = "250px"
+      pauseButtonImg.style.width = pauseButtonImg.style.width = "150px"
       pauseButtonImg.style.height = pauseButtonImg.style.height = "80px"
     }
   }

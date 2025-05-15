@@ -1,5 +1,6 @@
 const pausaElement = document.getElementById('pausa');
 const javaElements = document.getElementsByClassName('java');
+//carga el audio cuando entras al menu de pausa
 const pausaSoni = new Audio('./sonidos/pausaSonido.mp3')
 pausaSoni.volume = 0.2
 if (pausaElement){

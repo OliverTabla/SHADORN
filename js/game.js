@@ -4,7 +4,7 @@ const c = canvas.getContext('2d');
 const dpr = window.devicePixelRatio || 1;
 const gameWidth = 13000; // Ancho del mapa original
 const gameHeight = 1080; // Altura del mapa original
-
+//Tamaño de la pantalla del juego
 function resizeCanvas() {
 
   const scaleX = window.innerWidth / gameWidth;
@@ -24,7 +24,7 @@ function resizeCanvas() {
 
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
-
+//Capas de las imagenes
 const oceanLayerData = {
   l_fondo: l_fondo,
 };
@@ -68,7 +68,7 @@ const layersData = {
   //l_META: l_META,
   l_decoracion1: l_decoracion1,
 };
-
+//Leer las fotos de las texturas
 const tilesets = {
  l_fondo: { imageUrl: './images/decorations.png', tileSize: 16 },
  l_Bramble: { imageUrl: './images/decorations.png', tileSize: 16 },
@@ -92,11 +92,11 @@ const tilesets = {
  l_decoracion1: { imageUrl: './images/decorations.png', tileSize: 16 },
 };
 
-
+//Tamaño del bloque
 const collisionBlocks = [];
 const platforms = [];
 const blockSize = 16;
-
+//Colisiones para los bloques
 collisions.forEach((row, y) => {
   row.forEach((symbol, x) => {
     if (symbol === 1) {
@@ -107,6 +107,7 @@ collisions.forEach((row, y) => {
           size: blockSize,
         })
       );
+      //Colisiones para las plataformas
     } else if (symbol === 2) {
       platforms.push(
         new Platform({
@@ -118,7 +119,7 @@ collisions.forEach((row, y) => {
     }
   });
 });
-
+//Resolucion de las imagenes
 const renderLayer = (tilesData, tilesetImage, tileSize, context) => {
   tilesData.forEach((row, y) => {
     row.forEach((symbol, x) => {
@@ -178,7 +179,7 @@ cancionP.volume = 0.15;
   cancionP.play();
 
   const enemydie = new Audio ('./sonidos/dañoEne.mp3')
-  //posicion de la lava
+  //Cracion de la lava
 let lava1 = []
 let lavas1 = []
 l_lava.forEach((row, y) => {
@@ -210,7 +211,7 @@ l_lava.forEach((row, y) => {
     }
   });
 });
-//teletransporte
+//Bloque oculto que te teletransporta
 let tubo = []
 let tubos = []
 l_teleport.forEach((row, y) => {
@@ -243,7 +244,7 @@ l_teleport.forEach((row, y) => {
   });
 });
 
-//colocar caida
+//Barrera invisible de la caida
 let caida = []
 let caidas = []
 l_vacio.forEach((row, y) => {
@@ -275,7 +276,7 @@ l_vacio.forEach((row, y) => {
     }
   });
 });
-//caido del bioma de arboles sakura
+//barrera invisible de la caida del bioma de arboles sakura
 let caidasa = []
 let caidasas = []
 l_caidasaku.forEach((row, y) => {
@@ -308,7 +309,7 @@ l_caidasaku.forEach((row, y) => {
   });
 });
 
-//colocar pinchos
+//Creacion de los pinchos
 let pincho = []
 let pinchos = []
 l_pinchos.forEach((row, y) => {
@@ -340,7 +341,7 @@ l_pinchos.forEach((row, y) => {
     }
   });
 });
-//colocar la meta
+//Creacion de la meta
 let meta = []
 let metas = []
 l_META.forEach((row, y) => {
@@ -372,7 +373,7 @@ l_META.forEach((row, y) => {
     }
   });
 });
-
+//Coloca las entidades a base de coordenadas
 let player = new Player({
   x: 64,
   y: 10,
@@ -671,7 +672,7 @@ const keys = {
 
 let lastTime = performance.now();
 let camera = { x: 0, y: 0 };
-
+//Cuando el jugador pasa ese limite empieza el scroll
 const SCROLL_POST_RIGHT = 220;
 const SCROLL_POST_TOP = 100; 
 const SCROLL_POST_BOTTOM = 150; 
@@ -682,6 +683,7 @@ let sakubackgroundCanvas = null;
 let tuberiaFrontCanvas = null;
 let arbols1FrontCanvas = null;
 let entradaFrontCanvas = null;
+//Creacion de la moneda
 let gems = []
 let gemUI = new Explosion ({
   x: 18, 
@@ -698,6 +700,7 @@ let gemUI = new Explosion ({
   },
 })
 let gemCount = 0
+//Teletransporta al jugador a una posicion especifica del mapa a base de coordenadas
 function teleport(){
   player = new Player({
     x: 8096,
@@ -716,7 +719,7 @@ function teletubo(){
   });
   camera = { x: 9200, y: 0 };
 }
-//reiniciar
+//Cuando el jugador es eliminado o le da a reiniciar recoloca todo
 function init() {
   iniciar()
   reiniciar()
@@ -1091,6 +1094,7 @@ l_META.forEach((row, y) => {
 
   camera = { x: 0, y: 0 };
 }
+//Funcion que hace que aparezcan las imagenes en el mapa
 function animate(backgroundCanvas) {
 
   const currentTime = performance.now();
@@ -1101,7 +1105,7 @@ function animate(backgroundCanvas) {
   player.handleInput(keys);
   player.update(deltaTime, collisionBlocks);
 
-  //actualizar posicion rocky
+  //Daña al jugador o el jugador elimina a la entidad rocky
   for (let i = rockys.length - 1; i >= 0;  i--) {
     const rocky = rockys[i]
     rocky.update(deltaTime, collisionBlocks);
@@ -1151,7 +1155,7 @@ function animate(backgroundCanvas) {
   }
 }
 
-  //actualizar posicion jurk
+  //Daña al jugador o el jugador elimina a la entidad jurk
   for (let i = jurks.length - 1; i >= 0;  i--) {
     const jurk = jurks[i]
     jurk.update(deltaTime, collisionBlocks);
@@ -1201,7 +1205,7 @@ function animate(backgroundCanvas) {
   }
   }
 
-   //actualizar posicion gork
+    //Daña al jugador o el jugador elimina a la entidad gork
    for (let i = gorks.length - 1; i >= 0;  i--) {
     const gork = gorks[i]
     gork.update(deltaTime, collisionBlocks);
@@ -1251,7 +1255,7 @@ function animate(backgroundCanvas) {
   }
   }
 
-  //actualizar posicion guard
+  //Daña al jugador al tocar a la entidad guard
   for (let i = guards.length - 1; i >= 0;  i--) {
     const guard = guards[i]
     guard.update(deltaTime, collisionBlocks);
@@ -1267,7 +1271,7 @@ function animate(backgroundCanvas) {
       const fullCorazones = corazones.filter((corazon) => {
         return !corazon.depleted
       })
-
+      //Quita un corazon al jugador
       if (!player.isInvincible && fullCorazones.length > 0) {
         fullCorazones[fullCorazones.length - 1].depleted = true
           dañoSonido.volume = 0.1
@@ -1280,7 +1284,7 @@ function animate(backgroundCanvas) {
     }
   }
   }
-
+//Hace que desaparezca el efecto de las explisiones 
   for (let i = explosiones.length - 1; i >= 0;  i--) {
     const explosion = explosiones[i]
     explosion.update(deltaTime)
@@ -1289,7 +1293,7 @@ function animate(backgroundCanvas) {
       explosiones.splice(i, 1)
     }
   }
-
+//Cuando el jugador toca una moneda
   for (let i = gems.length - 1; i >= 0;  i--) {
     const gem = gems[i]
     gem.update(deltaTime)
@@ -1322,7 +1326,7 @@ function animate(backgroundCanvas) {
       gemCount++
     }
   }
-
+//Reinicia la partida al tocar la lava
   for (let i = lavas1.length - 1; i >= 0;  i--) {
     const lava1 = lavas1[i]
     lava1.update(deltaTime)
@@ -1370,7 +1374,7 @@ function animate(backgroundCanvas) {
       }
     }
   }
-
+//Reinicia la partida al tocar la barrera invisible al caer del mapa
   for (let i = caidasas.length - 1; i >= 0;  i--) {
     const caidasa = caidasas[i]
     caidasa.update(deltaTime)
@@ -1394,7 +1398,7 @@ function animate(backgroundCanvas) {
       }
     }
   }
-
+//Teletransporta al jugador cuando toca el bloque oculto de la tuberia
   for (let i = tubos.length - 1; i >= 0;  i--) {
     const tubo = tubos[i]
     tubo.update(deltaTime)
@@ -1419,7 +1423,7 @@ function animate(backgroundCanvas) {
     }
   }
 
-
+//Daña al jugador al toca la entidad pincho
   for (let i = pinchos.length - 1; i >= 0;  i--) {
     const pincho = pinchos[i]
     pincho.update(deltaTime)
@@ -1448,7 +1452,7 @@ function animate(backgroundCanvas) {
       }
     }
   }
-
+//Cuando el jugador y la meta interactuan activa la pantalla de resultado
   for (let i = metas.length - 1; i >= 0;  i--) {
     const meta = metas[i]
     meta.update(deltaTime)
@@ -1472,7 +1476,7 @@ function animate(backgroundCanvas) {
   }
   
 
-
+//Limite de la camara
   if (player.x > SCROLL_POST_RIGHT && player.x < 12288) {
     camera.x = player.x - SCROLL_POST_RIGHT;
   }
@@ -1486,11 +1490,12 @@ function animate(backgroundCanvas) {
   }
 
   
-
+//Dibuja las entidades y movimiento de la camara
   c.save();
   c.clearRect(0, 0, canvas.width, canvas.height);
   c.scale(dpr + 20, dpr + 19)
   c.translate(-camera.x, camera.y);
+  //Hace que las imagenes del fondo se desplazen de manera mas lenta
   c.drawImage(oceanbackgroundCanvas, camera.x * 0.32, 0);
   c.drawImage(sakubackgroundCanvas, camera.x * 0.15, 0);
   c.drawImage(bramblebackgroundCanvas, camera.x * 0.4, 0);
@@ -1584,7 +1589,7 @@ function animate(backgroundCanvas) {
 
 
 
-
+//Renderizar texturas
 const startRendering = async () => {
   try {
     

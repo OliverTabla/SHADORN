@@ -1,19 +1,19 @@
 let tiempoRef = Date.now()
 let cronometrar = false
 let acumulado = 0
-
+//Inicia el contador
 function iniciar() {
     cronometrar = true
 }
-
+//Pausa el contador
 function pausar() {
     cronometrar = false
 }
-
+//Reinicia el contador
 function reiniciar() {
     acumulado = 0
 }
-
+//Conteo del cronometro
 setInterval(() => {
     let tiempo = document.getElementById("time")
     if (cronometrar) {
@@ -22,12 +22,11 @@ setInterval(() => {
     tiempoRef = Date.now()
     tiempo.innerHTML = formatearMS(acumulado)
 }, 1000 / 60);
-
+//Estructura del cronometro
 function formatearMS(tiempo_ms) {
     let MS = tiempo_ms % 100
     
-    //Agregué la variable St para solucionar el problema de contar los minutos y horas.
-    
+   
     let St = Math.floor(((tiempo_ms - MS) / 1000))
     
     let S = St%60

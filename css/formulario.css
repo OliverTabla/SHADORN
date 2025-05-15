@@ -1,12 +1,13 @@
+/*Tipo de letra para todo*/
 * {
     font-family: "jersey 15";
     -webkit-text-stroke: 0px;
 }
-
+/*Delineado del texto volver*/
 #volver {
     -webkit-text-stroke: 1px black;
 }
-
+/*Posicion de formulario*/
 .containerForm {
     display: flex;
     width: 100%;

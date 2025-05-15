@@ -18,8 +18,6 @@ window.addEventListener('keydown', (event) => {
     case 'ArrowRight':
       keys.d.pressed = true;
       break;
-    case 'o':
-      teleport()
   }
   
 

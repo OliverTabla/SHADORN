@@ -1,31 +1,36 @@
+/*Tipo de letra para todo*/
 * {
     font-family: "jersey 15";
     -webkit-text-stroke: 0.7px black;
 }
-
+/*Posicion del titulo de historia.html*/
 #titulo{
     position: absolute;
     top: 10%
 }
+/*Posicion del la historia de historia.html*/
 #histo{
     position: absolute;
     color: white;
     top: 30%
 }
+/*Posicion del titulo de nosotros.html*/
 #titulo2{
     position: absolute;
     top: 10%
 }
+/*Posicion del texto de nosotros.html*/
 #histo2{
     position: absolute;
     color: white;
     top: 30%
 }
+/*Posicion del logo de nosotros.html*/
 #logo{
     position: absolute;
     bottom: 5%;
 }
-
+/* Ajustes para diferentes tamaños de pantalla */
 @media (min-width: 1367px) {
     #titulo{
         font-size: 150px !important;

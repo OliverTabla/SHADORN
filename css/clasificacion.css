@@ -1,9 +1,10 @@
+/*Tipo de letra para todo*/
 * {
   font-family: "jersey 15";
   -webkit-text-stroke: 1px black;
   box-sizing: border-box;
 }
-
+/*Posicion del body*/
 body {
   margin: 0;
   padding: 0;
@@ -24,7 +25,7 @@ body {
   padding: 20px;
 }
 
-
+/*Posicion de la tabla de clasificacion*/
 table {
   position: relative;
   margin: 20px auto;
@@ -128,7 +129,7 @@ td.tiempo {
   align-items: center;
   flex-direction: column;
 }
-
+/* Ajustes para diferentes tamaños de pantalla */
 @media (min-width: 1367px) {
   table {
     width: 65%;

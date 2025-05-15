@@ -1,5 +1,5 @@
 const formVideo = document.querySelector("#formVideo");
-
+//Comprobar envio del formulario
 formVideo.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -11,7 +11,7 @@ formVideo.addEventListener("submit", e => {
     })
         .then(respuesta => {
             if (!respuesta.ok) throw new Error("Error en la respuesta");
-            return respuesta.text(); // el PHP actual NO devuelve JSON, sino texto
+            return respuesta.text(); 
         })
         .then(result => {
             alert("correct", result);
@@ -21,7 +21,7 @@ formVideo.addEventListener("submit", e => {
             console.error(e);
         });
 });
-
+//Funcion que hace que salte la notificacion de que se a enviado el formulario
 function alert(type, text) {
     const alert = document.createElement("DIV");
     alert.classList.add("alert");

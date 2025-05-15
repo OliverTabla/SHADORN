@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cambiar el mensaje en dispositivos móviles si existe
   const messageElement = document.getElementById('message');
   if (isMobile && messageElement) {
-    messageElement.innerText = 'Toca la pantalla para empezar';
+    messageElement.innerText = 'Toca la pantalla para entrar';
   }
 
   // Intenta bloquear la orientación si el navegador lo soporta

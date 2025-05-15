@@ -1,3 +1,4 @@
+//Carga de imagenes
 const loadImage = (src) => {
   return new Promise((resolve, reject) => {
     const img = new Image()
