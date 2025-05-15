@@ -1,3 +1,4 @@
+//Creacion de los bloques
 class CollisionBlock {
   constructor({ x, y, size }) {
     this.x = x

@@ -1,8 +1,9 @@
+//Estadisticas del personaje
 const X_VELOCITY = 185
 const JUMP_POWER = 285
 const GRAVITY = 580
 const sonidoJump = new Audio('./sonidos/salto.mp3')
-
+//Creacion del elemento player
 class Player {
   constructor({ x, y, size, velocity = { x: 0, y: 0 } }) {
     this.x = x
@@ -20,6 +21,7 @@ class Player {
     this.image.src = './assets/entities/shadornsheet.png'
     this.elapsedTime = 0
     this.currentFrame = 0
+    //Animaciones del personaje
     this.sprites = {
       idle: {
         x: -20,
@@ -50,8 +52,11 @@ class Player {
         frames: 1,
       },
     }
+    //Sprite predeterminado del personaje
     this.currentSprite = this.sprites.idle
+    //Cambia el sentido del personaje
     this.facing = 'right'
+    //Hitbox del personaje
     this.hitbox = {
       x: 0,
       y: 0,
@@ -60,7 +65,7 @@ class Player {
     }
     this.isInvincible = false
   }
-
+//Tiempo en el cual el jugador es invencible
   setIsInvincible() {
     this.isInvincible = true
     setTimeout(() => {
@@ -75,7 +80,7 @@ class Player {
     //hitbox
     //c.fillStyle = 'rgba(2, 0, 126, 0.5)'
     //c.fillRect(this.hitbox.x, this.hitbox.y, this.hitbox.width, this.hitbox.height)
-
+//Cambia el sentido del personaje
     if (this.imageLoaded === true) {
       let xScale = 1
       let x = this.x
@@ -84,7 +89,7 @@ class Player {
         xScale = -1
         x = -this.x - this.width
       }
-
+//Cambia la opacidad del jugador
       c.save()
       if (this.isInvincible) {
         c.globalAlpha = 0.5
@@ -106,11 +111,12 @@ class Player {
       c.restore()
     }
   }
-
+//funcion que actualiza las acciones del personaje
   update(deltaTime, collisionBlocks) {
     if (!deltaTime) return
     if (this.congelado) return;
     this.elapsedTime += deltaTime
+    //Velocidad de la animacion
     const secondsInterval = 0.13
     if (this.elapsedTime > secondsInterval) {
       this.currentFrame = (this.currentFrame +1) % this.currentSprite.frames
@@ -143,17 +149,17 @@ class Player {
     this.determineDirection()
     this.switchSprites()
   }
-
+//Pausa la animacion del personaje
   congelar() {
     this.congelado = true;
     this.velocity.x = 0;  // Detiene el movimiento horizontal
     this.velocity.y = 0;  // Detiene el movimiento vertical
   }
-
+//Reanuda la animacion del personaje
   reanudar() {
     this.congelado = false;
   }
-  
+//Determina la direccion del personaje  
   determineDirection() {
     if (this.velocity.x > 0) {
       this.facing = 'right'
@@ -162,7 +168,7 @@ class Player {
     }
   }
 
-
+//Cambia los sprites dependiendo de la accion
   switchSprites() {
     if (
       this.isOnGround && 
@@ -198,7 +204,7 @@ class Player {
     }
   }
   
-    
+//Hace que el jugador salte   
   jump() {
     if(!this.isOnGround)
       return;
@@ -207,22 +213,22 @@ class Player {
     sonidoJump.volume = 0.08
     sonidoJump.play()
   }
-
+//Actualiza la posicion horizontal del personaje
   updateHorizontalPosition(deltaTime) {
     this.x += this.velocity.x * deltaTime
     this.hitbox.x += this.velocity.x * deltaTime
   }
-
+//Actualiza la posicion vertical del personaje
   updateVerticalPosition(deltaTime) {
     this.y += this.velocity.y * deltaTime
     this.hitbox.y += this.velocity.y * deltaTime
     
   }
-
+//Aplica la gravedad del personaje
   applyGravity(deltaTime) {
     this.velocity.y += GRAVITY * deltaTime
   }
-
+//Cuando pulsas una tecla activa el movimiento
   handleInput(keys) {
     this.velocity.x = 0
 
@@ -232,7 +238,7 @@ class Player {
       this.velocity.x = -X_VELOCITY
     }
   }
-
+//Detecta las colisiones horizontales de la hitbox
   checkForHorizontalCollisions(collisionBlocks) {
     const buffer = 0.0001
     for (let i = 0; i < collisionBlocks.length; i++) {
@@ -261,7 +267,7 @@ class Player {
       }
     }
   }
-
+//Detecta las colisiones verticales de la hitbox
   checkForVerticalCollisions(collisionBlocks) {
     const buffer = 0.0001
     for (let i = 0; i < collisionBlocks.length; i++) {
@@ -293,7 +299,7 @@ class Player {
       }
     }
   }
-
+//Mira la colision con la plataforma
   checkPlatformCollisions(platforms, deltaTime) {
     cancionP.play()
     const buffer = 0.0001

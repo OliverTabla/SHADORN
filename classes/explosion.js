@@ -1,3 +1,4 @@
+//Entidad de la explosion
 class Explosion {
   constructor({ 
     x, 

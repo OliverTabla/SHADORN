@@ -1,3 +1,4 @@
+//Creacion del elemento corazon
 class Corazon {
     constructor({ 
       x, 
@@ -33,7 +34,7 @@ class Corazon {
       // CUADRADO ROJO PARA PRUEBAS
       //c.fillStyle = 'rgba(255, 0, 0, 0.5)'
       //c.fillRect(this.x, this.y, this.width, this.height)
-  
+  //Cambia el frame del corazon
       if (this.imageLoaded === true) {
         let xScale = 1
         let x = this.x

@@ -1,3 +1,4 @@
+//Creacion de las plataformas
 class Platform {
   constructor({ x, y, width = 16, height = 4 }) {
     this.x = x

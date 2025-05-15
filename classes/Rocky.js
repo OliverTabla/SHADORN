@@ -1,7 +1,8 @@
+//Estadisticas del personaje
 const ROCKY_X_VELOCITY = 40
 const ROCKY_JUMP_POWER = 450
 const ROCKY_GRAVITY = 580
-
+//Creacion del elemento rocky
 class Rocky {
   constructor({ x, y, width, height, velocity = { x: ROCKY_X_VELOCITY, y: 0 } }, turningDistance = 170) {
     this.x = x
@@ -19,6 +20,7 @@ class Rocky {
     this.image.src = "./assets/entities/rockysheet.png"
     this.elapsedTime = 0
     this.currentFrame = 0
+    //Animacion del personaje
     this.sprites = {
       run: {
         x: -30,
@@ -28,14 +30,18 @@ class Rocky {
         frames: 3,
       },
     }
+    //Sprite predeterminado del personaje
     this.currentSprite = this.sprites.run
+    //Cambia el sentido del personaje
     this.previousFacingfacing = "right"
+    //Hitbox del personaje
     this.hitbox = {
       x: 0,
       y: 0,
       width: 20,
       height: 25,
     }
+    //cuanta distacia recorre el personaje
     this.distanceTraveled = 0
     this.turningDistance = turningDistance
   }
@@ -47,7 +53,7 @@ class Rocky {
     //hitbox
     //c.fillStyle = 'rgba(2, 0, 126, 0.5)'
     //c.fillRect(this.hitbox.x, this.hitbox.y, this.hitbox.width, this.hitbox.height)
-
+//Cambia el sentido del personaje
     if (this.imageLoaded === true) {
       let xScale = 1
       let x = this.x
@@ -73,20 +79,20 @@ class Rocky {
       c.restore()
     }
   }
-
+//Pausa la animacion del personaje
   congelar() {
     this.isFrozen = true
     this.previousFacing = this.facing
     this.velocity.x = 0 // Detiene el movimiento horizontal
     this.velocity.y = 0 // Detiene el movimiento vertical
   }
-
+//Reanuda la animacion del personaje
   reanudar() {
     this.isFrozen = false
     this.facing = this.previousFacing
     this.velocity.x = this.previousFacing === "left" ? -ROCKY_X_VELOCITY : ROCKY_X_VELOCITY
   }
-
+//funcion que actualiza las acciones del personaje
   update(deltaTime, collisionBlocks) {
     if (!deltaTime || this.isFrozen) return
     this.elapsedTime += deltaTime
@@ -122,7 +128,7 @@ class Rocky {
     this.checkForVerticalCollisions(collisionBlocks)
     this.determineDirection()
   }
-
+//Determina la direccion del personaje  
   determineDirection() {
     if (this.isFrozen) return
     if (this.velocity.x < 0) {
@@ -131,13 +137,13 @@ class Rocky {
       this.facing = "right"
     }
   }
-
+//Hace que el entidad salte (sin usar)
   jump() {
     if (!this.isOnGround) return
     this.velocity.y = -ROCKY_JUMP_POWER
     this.isOnGround = false
   }
-
+//Actualiza la posicion horizontal del personaje
   updateHorizontalPosition(deltaTime) {
     if (Math.abs(this.distanceTraveled) > this.turningDistance) {
       this.velocity.x = -this.velocity.x
@@ -147,16 +153,16 @@ class Rocky {
     this.hitbox.x += this.velocity.x * deltaTime
     this.distanceTraveled += this.velocity.x * deltaTime
   }
-
+//Actualiza la posicion vertical del personaje
   updateVerticalPosition(deltaTime) {
     this.y += this.velocity.y * deltaTime
     this.hitbox.y += this.velocity.y * deltaTime
   }
-
+//Aplica la gravedad del personaje
   applyGravity(deltaTime) {
     this.velocity.y += ROCKY_GRAVITY * deltaTime
   }
-
+//Cuando pulsas una tecla activa el movimiento
   handleInput(keys) {
     this.velocity.x = 0
 
@@ -166,7 +172,7 @@ class Rocky {
       this.velocity.x = -ROCKY_X_VELOCITY
     }
   }
-
+//Detecta las colisiones horizontales de la hitbox
   checkForHorizontalCollisions(collisionBlocks) {
     const buffer = 0.0001
     for (let i = 0; i < collisionBlocks.length; i++) {
@@ -194,7 +200,7 @@ class Rocky {
       }
     }
   }
-
+//Detecta las colisiones verticales de la hitbox
   checkForVerticalCollisions(collisionBlocks) {
     const buffer = 0.0001
     for (let i = 0; i < collisionBlocks.length; i++) {
@@ -226,7 +232,7 @@ class Rocky {
       }
     }
   }
-
+//Mira la colision con la plataforma
   checkPlatformCollisions(platforms, deltaTime) {
     const buffer = 0.0001
     for (const platform of platforms) {

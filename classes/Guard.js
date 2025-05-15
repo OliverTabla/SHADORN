@@ -1,7 +1,8 @@
+//Estadisticas del personaje
 const GUARD_X_VELOCITY = 2
 const GUARD_JUMP_POWER = 450
 const GUARD_GRAVITY = 580
-
+//Creacion del elemento guard
 class Guard {
   constructor({ x, y, width, height, velocity = { x: GUARD_X_VELOCITY, y: 0 } }, turningDistance = 100) {
     this.x = x
@@ -19,6 +20,7 @@ class Guard {
     this.image.src = "./assets/entities/guardsheet.png"
     this.elapsedTime = 0
     this.currentFrame = 0
+    //Animacion del personaje
     this.sprites = {
       run: {
         x: -10,
@@ -28,14 +30,18 @@ class Guard {
         frames: 4,
       },
     }
+    //Sprite predeterminado del personaje
     this.currentSprite = this.sprites.run
+    //Cambia el sentido del personaje
     this.previousFacingfacing = "right"
+    //Hitbox del personaje
     this.hitbox = {
       x: 0,
       y: 0,
       width: 30,
       height: 45,
     }
+    //cuanta distacia recorre el personaje
     this.distanceTraveled = 0
     this.turningDistance = turningDistance
   }
@@ -47,7 +53,7 @@ class Guard {
     //hitbox
     //c.fillStyle = 'rgba(2, 0, 126, 0.5)'
     //c.fillRect(this.hitbox.x, this.hitbox.y, this.hitbox.width, this.hitbox.height)
-
+//Cambia el sentido del personaje
     if (this.imageLoaded === true) {
       let xScale = 1
       let x = this.x
@@ -73,20 +79,20 @@ class Guard {
       c.restore()
     }
   }
-
+//Pausa la animacion del personaje
   congelar() {
     this.isFrozen = true
     this.previousFacing = this.facing
     this.velocity.x = 0 // Detiene el movimiento horizontal
     this.velocity.y = 0 // Detiene el movimiento vertical
   }
-
+//Reanuda la animacion del personaje
   reanudar() {
     this.isFrozen = false
     this.facing = this.previousFacing
     this.velocity.x = this.previousFacing === "left" ? -GUARD_X_VELOCITY : GUARD_X_VELOCITY
   }
-
+//funcion que actualiza las acciones del personaje
   update(deltaTime, collisionBlocks) {
     if (!deltaTime || this.isFrozen) return
     this.elapsedTime += deltaTime
@@ -121,7 +127,7 @@ class Guard {
     this.checkForVerticalCollisions(collisionBlocks)
     this.determineDirection()
   }
-
+//Determina la direccion del personaje  
   determineDirection() {
     if (this.isFrozen) return
     if (this.velocity.x < 0) {
@@ -130,13 +136,13 @@ class Guard {
       this.facing = "right"
     }
   }
-
+//Hace que el entidad salte (sin usar)
   jump() {
     if (!this.isOnGround) return
     this.velocity.y = -GUARD_JUMP_POWER
     this.isOnGround = false
   }
-
+//Actualiza la posicion horizontal del personaje
   updateHorizontalPosition(deltaTime) {
     if (Math.abs(this.distanceTraveled) > this.turningDistance) {
       this.velocity.x = -this.velocity.x
@@ -146,16 +152,16 @@ class Guard {
     this.hitbox.x += this.velocity.x * deltaTime
     this.distanceTraveled += this.velocity.x * deltaTime
   }
-
+//Actualiza la posicion vertical del personaje
   updateVerticalPosition(deltaTime) {
     this.y += this.velocity.y * deltaTime
     this.hitbox.y += this.velocity.y * deltaTime
   }
-
+//Aplica la gravedad del personaje
   applyGravity(deltaTime) {
     this.velocity.y += GUARD_GRAVITY * deltaTime
   }
-
+//Cuando pulsas una tecla activa el movimiento
   handleInput(keys) {
     this.velocity.x = 0
 
@@ -165,7 +171,7 @@ class Guard {
       this.velocity.x = -GUARD_X_VELOCITY
     }
   }
-
+//Detecta las colisiones horizontales de la hitbox
   checkForHorizontalCollisions(collisionBlocks) {
     const buffer = 0.0001
     for (let i = 0; i < collisionBlocks.length; i++) {
@@ -193,7 +199,7 @@ class Guard {
       }
     }
   }
-
+//Detecta las colisiones verticales de la hitbox
   checkForVerticalCollisions(collisionBlocks) {
     const buffer = 0.0001
     for (let i = 0; i < collisionBlocks.length; i++) {
@@ -225,7 +231,7 @@ class Guard {
       }
     }
   }
-
+//Mira la colision con la plataforma
   checkPlatformCollisions(platforms, deltaTime) {
     const buffer = 0.0001
     for (const platform of platforms) {
